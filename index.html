@@ -275,8 +275,8 @@
                 <p class="text-gray-300 mb-4">Cadete, para sobrevivir en el entorno de baja presión del Cráter Jezero, debes dominar las Leyes de los Gases (Boyle, Charles y Gay-Lussac). La ESA te proporciona <strong>cuatro canales diferentes</strong> para adquirir este conocimiento crítico antes de la próxima sesión en el centro de mando. <strong>Elige los que mejor se adapten a tu perfil cognitivo.</strong></p>
             </div>
 
-            <!-- Botones de Selección DUA -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            <!-- Botones de Selección DUA (AHORA 5 COLUMNAS) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
                 <!-- Opción Visual -->
                 <div class="dua-module bg-space-900 border-2 border-blue-500/50 p-6 rounded-lg text-center hover:border-blue-500" onclick="showDuaContent('video', this)">
                     <i class="fa-solid fa-video text-4xl text-blue-400 mb-4"></i>
@@ -291,18 +291,18 @@
                     <p class="text-sm text-gray-400">Transmisión de voz cifrada. Historia y narración.</p>
                 </div>
 
-                <!-- Opción Textual -->
-                <div class="dua-module bg-space-900 border-2 border-yellow-500/50 p-6 rounded-lg text-center hover:border-yellow-500" onclick="showDuaContent('texto', this)">
-                    <i class="fa-solid fa-file-pdf text-4xl text-yellow-400 mb-4"></i>
-                    <h4 class="text-lg font-bold text-white font-mono mb-2">Canal Textual</h4>
-                    <p class="text-sm text-gray-400">Manual oficial en PDF. Fórmulas a tu propio ritmo.</p>
-                </div>
-
-                <!-- Opción Gráfica -->
+                <!-- Opción Gráfica (LA INFOGRAFÍA) -->
                 <div class="dua-module bg-space-900 border-2 border-purple-500/50 p-6 rounded-lg text-center hover:border-purple-500" onclick="showDuaContent('esquema', this)">
                     <i class="fa-solid fa-project-diagram text-4xl text-purple-400 mb-4"></i>
                     <h4 class="text-lg font-bold text-white font-mono mb-2">Canal Gráfico</h4>
                     <p class="text-sm text-gray-400">Infografía visual y mapa conceptual.</p>
+                </div>
+
+                <!-- Opción Interactiva (SIMULADOR PHET) -->
+                <div class="dua-module bg-space-900 border-2 border-teal-500/50 p-6 rounded-lg text-center hover:border-teal-500" onclick="showDuaContent('simulador', this)">
+                    <i class="fa-solid fa-flask text-4xl text-teal-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white font-mono mb-2">Canal Interactivo</h4>
+                    <p class="text-sm text-gray-400">Simulador PhET. Experimenta tú mismo.</p>
                 </div>
             </div>
 
@@ -373,6 +373,20 @@
                                 </span>
                             </div>
                         </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido Interactivo (SIMULADOR PHET) -->
+            <div id="dua-simulador" class="dua-content bg-space-800 border border-teal-500/30 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(20,184,166,0.2)]">
+                <div class="bg-teal-900/40 p-3 border-b border-teal-500/30 flex items-center justify-between">
+                    <h4 class="font-mono font-bold text-teal-300"><i class="fa-solid fa-flask mr-2"></i> Laboratorio Virtual PhET</h4>
+                    <span class="text-xs font-mono text-gray-400">Simulador interactivo</span>
+                </div>
+                <div class="p-6">
+                    <p class="text-center text-gray-300 mb-4">Modifica la presión, el volumen y la temperatura para ver cómo reaccionan las partículas en tiempo real.</p>
+                    <div class="w-full rounded overflow-hidden shadow-lg border border-teal-600/50" style="height: 500px;">
+                        <iframe src="https://phet.colorado.edu/sims/html/gas-properties/latest/gas-properties_all.html?locale=es" width="100%" height="100%" scrolling="no" allowfullscreen loading="lazy" class="border-0"></iframe>
                     </div>
                 </div>
             </div>
@@ -510,6 +524,12 @@
                             <span class="bg-green-900/50 text-green-300 px-3 py-1 rounded text-xs font-mono border border-green-500">Aprendizaje Inductivo</span>
                         </div>
                         <p class="text-gray-300 mb-4">Las tripulaciones usan simuladores interactivos (PhET Interactive Simulations) en sus dispositivos para presurizar el hábitat a temperatura marciana.</p>
+                        
+                        <div class="mt-4 mb-2">
+                            <a href="https://phet.colorado.edu/sims/html/gas-properties/latest/gas-properties_all.html?locale=es" target="_blank" class="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-500 text-white font-mono font-bold py-2 px-4 rounded shadow-[0_0_10px_rgba(20,184,166,0.4)] transition-transform hover:scale-105 border border-teal-400">
+                                <i class="fa-solid fa-flask"></i> ABRIR SIMULADOR A PANTALLA COMPLETA
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -590,6 +610,7 @@
             if(type === 'audio') buttonElement.style.borderColor = '#22c55e'; // verde
             if(type === 'texto') buttonElement.style.borderColor = '#eab308'; // amarillo
             if(type === 'esquema') buttonElement.style.borderColor = '#a855f7'; // morado
+            if(type === 'simulador') buttonElement.style.borderColor = '#14b8a6'; // teal
             
             buttonElement.style.transform = 'translateY(-5px)';
         }
