@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión Bio-Génesis | Flipped Classroom</title>
+    <!-- Tailwind CSS para la maquetación base -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;800&family=Special+Elite&display=swap" rel="stylesheet">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mars: {
+                            100: '#edd8d1',
+                            300: '#d79e8a',
+                            500: '#c1440e', // Color tierra marciana
+                            700: '#8a310a',
+                            900: '#451805',
+                        },
+                        space: {
+                            900: '#0b0c10',
+                            800: '#1f2833',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                        typewriter: ['Special Elite', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0c10;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(193, 68, 14, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Utilidades de Diseño Collage */
+        .collage-container {
+            position: relative;
+            width: 100%;
+            min-height: 80vh;
+        }
+
+        .paper-scrap {
+            background-color: #fdfbf7;
+            color: #1a202c;
+            box-shadow: 2px 4px 15px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .paper-scrap::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-3deg);
+            width: 100px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .tape-masking {
+            background-color: rgba(238, 230, 211, 0.7);
+            border-left: 2px dashed rgba(0,0,0,0.1);
+            border-right: 2px dashed rgba(0,0,0,0.1);
+        }
+
+        .tape-red {
+            background-color: rgba(193, 68, 14, 0.8);
+        }
+
+        .polaroid {
+            background: white;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            color: black;
+            font-family: 'Special Elite', cursive;
+            text-align: center;
+        }
+
+        .blueprint-bg {
+            background-color: #1f4287;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #e0e7ff;
+            border: 2px solid #60a5fa;
+        }
+
+        /* Animaciones para la Gamificación */
+        @keyframes emergencyFlash {
+            0% { background-color: rgba(220, 38, 38, 0.1); box-shadow: inset 0 0 0px red; }
+            50% { background-color: rgba(220, 38, 38, 0.3); box-shadow: inset 0 0 50px red; }
+            100% { background-color: rgba(220, 38, 38, 0.1); box-shadow: inset 0 0 0px red; }
+        }
+
+        .emergency-mode {
+            animation: emergencyFlash 1s infinite;
+        }
+
+        /* Ocultar secciones no activas */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0c10; }
+        ::-webkit-scrollbar-thumb { background: #c1440e; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8a310a; }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-200">
+
+    <!-- Navegación Lateral / Superior -->
+    <nav class="fixed w-full z-50 bg-space-900/90 backdrop-blur-md border-b border-mars-500/30 font-mono text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
+                    <i class="fa-solid fa-satellite text-mars-500 text-2xl"></i>
+                    <span class="font-bold tracking-widest text-white">ESA // BIO-GÉNESIS</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <button onclick="navigate('home')" class="nav-btn hover:text-mars-300 px-3 py-2 rounded-md font-medium transition-colors border-b-2 border-transparent hover:border-mars-500 text-mars-300">Briefing</button>
+                        <button onclick="navigate('didactica')" class="nav-btn hover:text-mars-300 px-3 py-2 rounded-md font-medium transition-colors border-b-2 border-transparent hover:border-mars-500">Diseño ADDIE & DUA</button>
+                        <button onclick="navigate('misiones')" class="nav-btn hover:text-mars-300 px-3 py-2 rounded-md font-medium transition-colors border-b-2 border-transparent hover:border-mars-500">Fases (Flipped)</button>
+                    </div>
+                </div>
+                <!-- Menú Móvil -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Contenido Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-space-800 border-b border-mars-500/30">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+                <button onclick="navigate('home')" class="text-left px-3 py-2 text-base font-medium text-mars-300">Briefing</button>
+                <button onclick="navigate('didactica')" class="text-left px-3 py-2 text-base font-medium text-gray-300">Diseño ADDIE & DUA</button>
+                <button onclick="navigate('misiones')" class="text-left px-3 py-2 text-base font-medium text-gray-300">Fases (Flipped)</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative min-h-screen">
+
+        <!-- ==================== SECCIÓN 1: HOME (CARTA DEL RETO) ==================== -->
+        <section id="home" class="page-section active collage-container">
+            
+            <!-- Elemento decorativo: Foto de Marte -->
+            <div class="hidden lg:block absolute right-0 top-10 polaroid transform rotate-6 z-0 w-72">
+                <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&q=80&w=400" alt="Superficie marciana" class="w-full h-auto">
+                <p class="mt-3 text-sm">Sector Valles Marineris - 2026</p>
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-16 h-8 tape-masking rotate-2"></div>
+            </div>
+
+            <!-- Carta Oficial (Centro) -->
+            <div class="relative z-10 max-w-3xl mx-auto mt-10">
+                <div class="paper-scrap p-8 sm:p-12 font-typewriter text-lg leading-relaxed transform -rotate-1">
+                    <div class="border-b-2 border-gray-400 pb-4 mb-6 flex justify-between items-end">
+                        <div>
+                            <h1 class="text-3xl font-bold tracking-tighter">AGENCIA ESPACIAL EUROPEA (ESA)</h1>
+                            <p class="text-sm text-gray-600 font-sans mt-1">Dirección de Exploración Humana y Robótica</p>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/ESA_logo_simple.svg/512px-ESA_logo_simple.svg.png" alt="ESA Logo" class="h-12 opacity-50 filter grayscale">
+                    </div>
+
+                    <p class="mb-4 text-red-700 font-bold">ASUNTO: CONVOCATORIA URGENTE - PROYECTO BIO-GÉNESIS</p>
+                    <p class="mb-4">Estimados Cadetes de Ciencias (4º ESO):</p>
+                    <p class="mb-4">La colonización de Marte ya no es ciencia ficción, es un problema de termodinámica, cinética química y estequiometría. Nuestra primera avanzadilla robótica ha establecido los cimientos del "Hábitat Ares I" en el cráter Jezero, pero enfrentamos un reto crítico: el soporte vital.</p>
+                    <p class="mb-4">La atmósfera exterior es un 95% de CO2 a una presión media de 600 Pa. Letal. Necesitamos mentes jóvenes y no contaminadas por la ingeniería tradicional para resolver esto.</p>
+                    
+                    <div class="bg-gray-200 p-4 border-l-4 border-red-700 my-6 font-sans text-sm">
+                        <h3 class="font-bold text-black mb-2"><i class="fa-solid fa-crosshairs text-red-600 mr-2"></i>OBJETIVO DE LA MISIÓN:</h3>
+                        <p class="text-gray-800">Diseñar el sistema completo de presurización y oxigenación del hábitat. Deberán aplicar las Leyes de los Gases y calcular las reacciones químicas necesarias para generar O2 a partir del suelo marciano, presentando un modelo viable (Pitch / Prototipo) al comité de inversores en 5 Soles (sesiones).</p>
+                    </div>
+
+                    <p class="mb-4">El fracaso no es una opción. Tienen acceso a los simuladores de nuestra base de datos para su entrenamiento previo. Prepárense antes de venir al centro de mando.</p>
+                    
+                    <div class="mt-8">
+                        <p>Firmado,</p>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Signature_of_John_Hancock.svg" alt="Firma Oficial" class="h-16 opacity-70 my-2 filter contrast-200">
+                        <p class="font-bold">Dra. E. K. Vance</p>
+                        <p class="text-sm font-sans text-gray-500">Directora de Operaciones Extraplanetarias</p>
+                    </div>
+
+                    <!-- "Sello" de clasificado -->
+                    <div class="absolute top-10 right-10 border-4 border-red-600 text-red-600 font-bold p-2 transform rotate-12 opacity-80 pointer-events-none">
+                        TOP SECRET
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <button onclick="navigate('didactica')" class="bg-mars-500 hover:bg-mars-700 text-white font-mono font-bold py-4 px-8 rounded shadow-[0_0_15px_rgba(193,68,14,0.6)] transition-all transform hover:scale-105">
+                        [ ACCEDER AL DOSIER TÉCNICO E INSTRUCCIONAL ] <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECCIÓN 2: DISEÑO ADDIE Y DUA ==================== -->
+        <section id="didactica" class="page-section collage-container pt-8">
+            <h2 class="text-4xl font-mono font-bold text-mars-300 mb-2 border-b-2 border-mars-500/50 pb-4 uppercase">
+                <i class="fa-solid fa-microscope mr-3 text-mars-500"></i>Metodología: El Motor de Curvatura
+            </h2>
+            <p class="text-gray-400 font-mono text-sm mb-10">// ACCESO AL DISEÑO INSTRUCCIONAL: AUTORIZADO // MÓDULO FINAL FLIPPED CLASSROOM</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
+                
+                <!-- Modelo ADDIE en un plano técnico -->
+                <div class="blueprint-bg p-6 rounded-lg relative transform rotate-1 hover:rotate-0 transition-transform">
+                    <div class="absolute -top-3 right-10 w-20 h-6 tape-masking rotate-3 tape-red"></div>
+                    <h3 class="font-mono text-2xl font-bold mb-6 text-white border-b border-blue-400 pb-2">ESQUEMA ADDIE (Flipped Mastery)</h3>
+                    
+                    <ul class="space-y-4 font-sans">
+                        <li class="flex items-start">
+                            <span class="bg-blue-900 text-blue-200 font-mono font-bold p-1 px-3 mr-4 rounded border border-blue-500">A</span>
+                            <div>
+                                <strong class="text-white">Análisis:</strong> Test diagnóstico previo ("Test de Aptitud Espacial") vía Google Forms. Creación de grupos heterogéneos según competencias y perfiles DUA.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-900 text-blue-200 font-mono font-bold p-1 px-3 mr-4 rounded border border-blue-500">D</span>
+                            <div>
+                                <strong class="text-white">Diseño:</strong> Integración de <span class="text-mars-300 font-bold">Just-in-Time Teaching (JiTT)</span>. Selección de Saberes Básicos (Termodinámica/Gases) empaquetados en un Menú DUA para consumo pre-clase.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-900 text-blue-200 font-mono font-bold p-1 px-3 mr-4 rounded border border-blue-500">D</span>
+                            <div>
+                                <strong class="text-white">Desarrollo:</strong> Curación y creación de vídeos interactivos (EdPuzzle), podcasts científicos, simuladores PhET y rúbricas.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-900 text-blue-200 font-mono font-bold p-1 px-3 mr-4 rounded border border-blue-500">I</span>
+                            <div>
+                                <strong class="text-white">Implementación:</strong> 4 Sesiones presenciales. Aula 100% activa usando <span class="text-mars-300 font-bold">Peer Instruction</span> (Instrucción entre pares) y Gamificación.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-900 text-blue-200 font-mono font-bold p-1 px-3 mr-4 rounded border border-blue-500">E</span>
+                            <div>
+                                <strong class="text-white">Evaluación:</strong> Formativa (Cuestionarios JiTT, ConceptTests en clase) y Sumativa (Pitch Final con Rúbrica compartida).
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Matriz DUA (Diseño Universal) estilo notas adhesivas -->
+                <div class="relative">
+                    <h3 class="font-mono text-2xl font-bold mb-6 text-mars-300"><i class="fa-solid fa-universal-access mr-2"></i>Matriz DUA Aplicada</h3>
+                    
+                    <div class="grid gap-4">
+                        <!-- Red Afectiva -->
+                        <div class="bg-yellow-100 text-gray-800 p-5 shadow-lg transform -rotate-1 relative">
+                            <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-12 h-6 tape-masking -rotate-2"></div>
+                            <h4 class="font-bold text-lg mb-2 text-yellow-800"><i class="fa-regular fa-heart mr-2"></i>Red Afectiva (Implicación)</h4>
+                            <p class="text-sm"><strong>El Porqué del aprendizaje:</strong> La narrativa gamificada (Soporte Vital en Marte) aporta relevancia auténtica. Los alumnos eligen su rol en la tripulación y cómo presentar el producto final (Pitch).</p>
+                        </div>
+
+                        <!-- Red Reconocimiento -->
+                        <div class="bg-green-100 text-gray-800 p-5 shadow-lg transform rotate-1 relative">
+                            <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-12 h-6 tape-masking rotate-3"></div>
+                            <h4 class="font-bold text-lg mb-2 text-green-800"><i class="fa-regular fa-eye mr-2"></i>Red de Reconocimiento (Representación)</h4>
+                            <p class="text-sm"><strong>El Qué del aprendizaje:</strong> El contenido Flipped (Espacio Individual) no es un único vídeo. Se ofrece un <em>Menú Multimodal</em>: Vídeo subtitulado (EdPuzzle), Podcast narrativo con transcripción, o texto/infografía interactiva.</p>
+                        </div>
+
+                        <!-- Red Estratégica -->
+                        <div class="bg-blue-100 text-gray-800 p-5 shadow-lg transform -rotate-2 relative">
+                            <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-12 h-6 tape-masking -rotate-1"></div>
+                            <h4 class="font-bold text-lg mb-2 text-blue-800"><i class="fa-solid fa-gears mr-2"></i>Red Estratégica (Acción y Expresión)</h4>
+                            <p class="text-sm"><strong>El Cómo del aprendizaje:</strong> Múltiples formas de demostrar competencia en el "Pitch Final": vídeo pregrabado, maqueta 3D comentada, presentación oral en directo o póster científico interactivo.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-12 text-right">
+                <button onclick="navigate('misiones')" class="text-mars-300 hover:text-white font-mono border border-mars-500 hover:bg-mars-500/20 px-6 py-2 rounded transition-all">
+                    INICIAR FASES DEL PROYECTO <i class="fa-solid fa-angles-right ml-2"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ==================== SECCIÓN 3: SESIONES / MISIONES ==================== -->
+        <section id="misiones" class="page-section pt-8 pb-20">
+            <h2 class="text-4xl font-mono font-bold text-mars-300 mb-2 border-b-2 border-mars-500/50 pb-4 uppercase">
+                <i class="fa-solid fa-satellite-dish mr-3 text-mars-500"></i>Cronograma de Operaciones
+            </h2>
+            <p class="text-gray-400 font-mono text-sm mb-12">// PROTOCOLO FLIPPED CLASSROOM ACTIVADO // FASE GRUPAL</p>
+
+            <div class="relative border-l-2 border-mars-500/30 ml-3 md:ml-6 space-y-12">
+                
+                <!-- PRE-CLASE -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 md:-left-4 top-0 bg-space-900 border-2 border-mars-300 w-6 md:w-8 h-6 md:h-8 rounded-full flex items-center justify-center text-mars-300 z-10 font-bold font-mono text-xs">P</div>
+                    <div class="bg-space-800 border border-gray-700 p-6 rounded-lg shadow-lg hover:border-mars-500/50 transition-colors">
+                        <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+                            <h3 class="text-xl md:text-2xl font-bold text-white font-mono">Espacio Individual (Pre-Clase)</h3>
+                            <span class="bg-purple-900/50 text-purple-300 px-3 py-1 rounded text-xs font-mono border border-purple-500">Just-in-Time Teaching</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Los alumnos se enfrentan al material en casa mediante un enfoque de instrucción directa asíncrona pero altamente guiada.</p>
+                        <div class="bg-space-900 p-4 rounded text-sm font-mono border-l-4 border-purple-500 mb-4">
+                            <strong>Menú DUA (A elegir):</strong><br>
+                            - <i class="fa-brands fa-youtube mr-1"></i> Vídeo en EdPuzzle sobre las Leyes de Boyle, Charles y Gay-Lussac.<br>
+                            - <i class="fa-solid fa-podcast mr-1"></i> Podcast "Diario de a bordo: Respirar en Marte" (con PDF de transcripción).<br>
+                            - <i class="fa-solid fa-book-open mr-1"></i> Infografía interactiva Genially.
+                        </div>
+                        <p class="text-sm text-mars-100 bg-mars-900/40 p-3 rounded"><i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-2"></i><strong>Cuestionario JiTT:</strong> Antes de la clase presencial, deben responder 3 preguntas breves vía Google Forms. El docente revisa las respuestas 1 hora antes de la clase para adaptar la sesión (abordar concepciones erróneas comunes).</p>
+                    </div>
+                </div>
+
+                <!-- SESIÓN 1 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 md:-left-4 top-0 bg-space-900 border-2 border-mars-500 w-6 md:w-8 h-6 md:h-8 rounded-full flex items-center justify-center text-mars-500 z-10 font-bold font-mono text-xs shadow-[0_0_10px_rgba(193,68,14,0.8)]">1</div>
+                    <div class="bg-space-800 border border-mars-500/30 p-6 rounded-lg shadow-lg relative overflow-hidden">
+                        <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+                            <h3 class="text-xl md:text-2xl font-bold text-white font-mono">Sesión 1: Briefing & Peer Instruction</h3>
+                            <span class="bg-blue-900/50 text-blue-300 px-3 py-1 rounded text-xs font-mono border border-blue-500">Eric Mazur Method</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Transformación radical del espacio grupal. No hay clase magistral, hay resolución de conflictos cognitivos detectados en el JiTT.</p>
+                        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-4">
+                            <li><strong class="text-white">Minutos 0-15:</strong> Resolución de dudas masivas detectadas en el cuestionario previo.</li>
+                            <li><strong class="text-white">Minutos 15-45 (Peer Instruction):</strong> El docente lanza <em>ConceptTests</em> (preguntas trampa de opción múltiple) en pantalla (Plickers o Mentimeter).
+                                <ul class="list-circle pl-6 mt-2 text-sm text-gray-400">
+                                    <li>Fase 1: Votación individual silenciosa.</li>
+                                    <li>Fase 2: Si el acierto es entre 30% y 70%, se exige <strong>discusión con el compañero</strong> de al lado para convencerle de su respuesta.</li>
+                                    <li>Fase 3: Revotación (el porcentaje de acierto se dispara gracias a la instrucción entre pares).</li>
+                                </ul>
+                            </li>
+                            <li><strong class="text-white">Minutos 45-55:</strong> Formación de las tripulaciones (grupos base) e inicio de diseño.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SESIÓN 2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 md:-left-4 top-0 bg-space-900 border-2 border-mars-500 w-6 md:w-8 h-6 md:h-8 rounded-full flex items-center justify-center text-mars-500 z-10 font-bold font-mono text-xs">2</div>
+                    <div class="bg-space-800 border border-gray-700 p-6 rounded-lg shadow-lg">
+                        <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+                            <h3 class="text-xl md:text-2xl font-bold text-white font-mono">Sesión 2: Simulador PhET (Descubrimiento)</h3>
+                            <span class="bg-green-900/50 text-green-300 px-3 py-1 rounded text-xs font-mono border border-green-500">Aprendizaje Inductivo</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Las tripulaciones usan simuladores interactivos (PhET Interactive Simulations) en sus dispositivos.</p>
+                        <p class="text-gray-400"><strong>El Reto:</strong> Determinar experimentalmente (virtual) cuántos moles de una mezcla gaseosa O2/N2 necesitan inyectar en el volumen de su hábitat para alcanzar la presión óptima a la temperatura media marciana (-60ºC).</p>
+                        <div class="mt-4 flex gap-4">
+                            <!-- Falsa foto polaroid del simulador -->
+                            <div class="polaroid transform rotate-2 w-48 text-xs hidden sm:block">
+                                <div class="bg-gray-800 h-24 mb-2 flex items-center justify-center border border-gray-600">
+                                    <i class="fa-solid fa-laptop-code text-3xl text-blue-400"></i>
+                                </div>
+                                PhET Gas Properties
+                            </div>
+                            <p class="text-sm text-gray-400 flex-1">El docente actúa estrictamente como facilitador ("Guía al lado", no "Sabio en la tarima"), resolviendo bloqueos solo cuando el grupo entero no puede avanzar, promoviendo el andamiaje.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SESIÓN 3 (GAMIFICADA) -->
+                <div id="session3-card" class="relative pl-8 md:pl-12 transition-all duration-300">
+                    <div class="absolute -left-3 md:-left-4 top-0 bg-space-900 border-2 border-mars-500 w-6 md:w-8 h-6 md:h-8 rounded-full flex items-center justify-center text-mars-500 z-10 font-bold font-mono text-xs">3</div>
+                    <div class="bg-space-800 border border-red-700 p-6 rounded-lg shadow-lg relative">
+                        <!-- Botón interactivo para impresionar al ponente -->
+                        <button onclick="triggerEmergency()" class="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded shadow-lg flex items-center gap-2 z-20 text-xs sm:text-sm transition-transform active:scale-95">
+                            <i class="fa-solid fa-triangle-exclamation"></i> SIMULAR TORMENTA
+                        </button>
+
+                        <div class="flex justify-between items-start mb-4 flex-wrap gap-2 pr-40">
+                            <h3 class="text-xl md:text-2xl font-bold text-white font-mono">Sesión 3: El Evento Inesperado</h3>
+                            <span class="bg-red-900/50 text-red-300 px-3 py-1 rounded text-xs font-mono border border-red-500">Gamificación / ABP</span>
+                        </div>
+                        
+                        <div id="normal-text" class="text-gray-300 mb-4">
+                            <p>En medio del cálculo estequiométrico para los generadores de oxígeno, se introduce un elemento de <strong>dinámica de juego (urgencia y sorpresa)</strong>.</p>
+                            <p class="mt-2 text-sm text-gray-400"><i class="fa-solid fa-arrow-up text-mars-300 mr-2"></i> <em>(Haz clic en el botón superior derecho para ver la mecánica que se aplica en el aula)</em></p>
+                        </div>
+
+                        <div id="emergency-text" class="hidden">
+                            <div class="bg-red-900/40 border-2 border-red-500 p-4 rounded mb-4 font-mono">
+                                <h4 class="text-red-400 font-bold text-lg mb-2"><i class="fa-solid fa-bell-slash animate-pulse mr-2"></i> ¡ALERTA CRÍTICA: TORMENTA DE POLVO GLOBAL!</h4>
+                                <p class="text-white">Los paneles solares están cubiertos. La temperatura del hábitat caerá a -100ºC en 40 minutos. La presión interna colapsará según la Ley de Gay-Lussac.</p>
+                                <p class="text-yellow-400 mt-2"><strong>MISIÓN ABREVIADA:</strong> Recalcular el nuevo volumen necesario o añadir calefactores de isótopos antes de que acabe la clase. Si suena el timbre y no hay cálculos, la colonia se pierde.</p>
+                            </div>
+                            <p class="text-sm text-gray-300"><em>Justificación didáctica:</em> Se aplica la presión de tiempo (mecánica de juego) para fomentar el trabajo colaborativo bajo estrés simulado, consolidando la aplicación práctica de la teoría en un contexto narrativo (Aprendizaje Basado en Problemas).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SESIÓN 4 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 md:-left-4 top-0 bg-space-900 border-2 border-mars-500 w-6 md:w-8 h-6 md:h-8 rounded-full flex items-center justify-center text-mars-500 z-10 font-bold font-mono text-xs">4</div>
+                    <div class="bg-space-800 border border-gray-700 p-6 rounded-lg shadow-lg">
+                        <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+                            <h3 class="text-xl md:text-2xl font-bold text-white font-mono">Sesión 4: El "Pitch" a la ESA</h3>
+                            <span class="bg-yellow-900/50 text-yellow-300 px-3 py-1 rounded text-xs font-mono border border-yellow-500">Evaluación Formativa/Sumativa</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Culminación del proyecto grupal. Presentación de los diseños de soporte vital.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                            <div class="border border-gray-600 p-4 rounded">
+                                <h4 class="font-bold text-mars-300 mb-2 font-mono text-sm border-b border-gray-600 pb-1">Herramientas de Evaluación</h4>
+                                <ul class="text-sm text-gray-400 space-y-1">
+                                    <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Rúbrica compartida en Classroom desde el Sol 1.</li>
+                                    <li><i class="fa-solid fa-users text-blue-400 mr-2"></i> Coevaluación entre pares (evalúan el Pitch de otros equipos).</li>
+                                    <li><i class="fa-solid fa-bullseye text-red-400 mr-2"></i> Diana de autoevaluación grupal (¿Cómo trabajamos?).</li>
+                                </ul>
+                            </div>
+                            <div class="paper-scrap p-4 transform rotate-1 text-sm">
+                                <h4 class="font-bold text-black mb-1 font-typewriter">Nota del Docente:</h4>
+                                <p class="text-gray-800 font-typewriter">Se evalúa el proceso deductivo y el cálculo matemático de las leyes, no solo el formato final. El Flipped Learning ha permitido dedicar el 100% del tiempo de estas 4 sesiones a crear, aplicar y evaluar (niveles superiores de la taxonomía de Bloom).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="text-gray-500 font-mono text-sm mb-4">FIN DE LA TRANSMISIÓN</p>
+                <i class="fa-brands fa-github text-3xl text-gray-600 hover:text-white transition-colors cursor-pointer" title="Preparado para GitHub Pages"></i>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Lógica de Navegación SPA (Single Page Application)
+        function navigate(pageId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.page-section').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Mostrar la sección seleccionada
+            document.getElementById(pageId).classList.add('active');
+            
+            // Actualizar el menú visualmente (Escritorio)
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-mars-300', 'border-mars-500');
+                btn.classList.add('border-transparent');
+                
+                // Un poco "hacky" pero funciona para los nombres de las funciones vs ids
+                if(btn.getAttribute('onclick').includes(pageId)) {
+                    btn.classList.add('text-mars-300', 'border-mars-500');
+                    btn.classList.remove('border-transparent');
+                }
+            });
+
+            // Cerrar menú móvil si está abierto
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll arriba suave
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Lógica Menú Móvil
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Lógica Gamificación (Botón Alarma)
+        let emergencyActive = false;
+        function triggerEmergency() {
+            const card = document.getElementById('session3-card');
+            const normalText = document.getElementById('normal-text');
+            const emergencyText = document.getElementById('emergency-text');
+            const btn = card.querySelector('button');
+            
+            emergencyActive = !emergencyActive;
+            
+            if(emergencyActive) {
+                // Activar Emergencia
+                document.body.classList.add('emergency-mode');
+                card.querySelector('.bg-space-800').classList.add('border-red-500');
+                card.querySelector('.bg-space-800').classList.remove('border-red-700');
+                
+                normalText.classList.add('hidden');
+                emergencyText.classList.remove('hidden');
+                
+                btn.innerHTML = '<i class="fa-solid fa-power-off"></i> SISTEMA RESTAURADO';
+                btn.classList.replace('bg-red-600', 'bg-green-600');
+                btn.classList.replace('hover:bg-red-700', 'hover:bg-green-700');
+            } else {
+                // Desactivar Emergencia
+                document.body.classList.remove('emergency-mode');
+                card.querySelector('.bg-space-800').classList.remove('border-red-500');
+                card.querySelector('.bg-space-800').classList.add('border-red-700');
+                
+                normalText.classList.remove('hidden');
+                emergencyText.classList.add('hidden');
+                
+                btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> SIMULAR TORMENTA';
+                btn.classList.replace('bg-green-600', 'bg-red-600');
+                btn.classList.replace('hover:bg-green-700', 'hover:bg-red-700');
+            }
+        }
+    </script>
+</body>
+</html>
