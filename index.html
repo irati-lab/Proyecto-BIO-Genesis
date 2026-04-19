@@ -148,7 +148,6 @@
         .dua-module:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            border-color: #c1440e;
         }
         .dua-content {
             display: none;
@@ -208,13 +207,11 @@
         <!-- ==================== SECCIÓN 1: HOME (CARTA DEL RETO) ==================== -->
         <section id="home" class="page-section active collage-container">
             
-            <!-- ELEMENTO DESTACADO: ENLACE AL FORMULARIO DE APTITUD -->
+            <!-- ELEMENTO DESTACADO: ENLACE AL FORMULARIO -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfeiCigwu1XcC4I0RNnfySoSn3apiy6o5okzcrKPT-ElibQVg/viewform?usp=dialog" target="_blank" class="block lg:absolute lg:right-0 lg:top-10 polaroid transform rotate-6 z-20 w-64 md:w-80 cursor-pointer hover:scale-105 transition-transform duration-300 mx-auto mb-8 lg:mb-0 pulse-attention outline outline-4 outline-red-600 outline-offset-4">
-                <!-- Etiqueta de "Paso 1" -->
                 <div class="absolute -top-6 -right-6 bg-red-600 text-white font-mono font-bold px-4 py-2 rounded-full shadow-lg transform rotate-12 flex items-center gap-2">
                     <i class="fa-solid fa-hand-pointer"></i> ¡PASO 1!
                 </div>
-                <!-- Imagen aportada -->
                 <img src="martesuperficie.png" alt="Superficie marciana - Acceso al test" class="w-full h-auto border-2 border-gray-300" onerror="this.src='https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&q=80&w=400';">
                 <div class="mt-3 bg-red-100 text-red-800 p-2 border-2 border-red-800 font-bold">
                     [ CLICK AQUÍ PARA REALIZAR EL TEST DE APTITUD ]
@@ -275,109 +272,107 @@
 
             <div class="bg-space-800 border border-gray-700 p-6 rounded-lg shadow-lg mb-8">
                 <h3 class="text-xl font-bold text-white font-mono mb-4 border-l-4 border-mars-500 pl-3">Directiva de Misión:</h3>
-                <p class="text-gray-300 mb-4">Cadete, para sobrevivir en el entorno de baja presión del Cráter Jezero, debes dominar las Leyes de los Gases (Boyle, Charles y Gay-Lussac). La ESA te proporciona tres canales diferentes para adquirir este conocimiento crítico antes de la próxima sesión en el centro de mando. <strong>Elige el o los que mejor se adapten a tu perfil cognitivo.</strong></p>
+                <p class="text-gray-300 mb-4">Cadete, para sobrevivir en el entorno de baja presión del Cráter Jezero, debes dominar las Leyes de los Gases (Boyle, Charles y Gay-Lussac). La ESA te proporciona <strong>cuatro canales diferentes</strong> para adquirir este conocimiento crítico antes de la próxima sesión en el centro de mando. <strong>Elige los que mejor se adapten a tu perfil cognitivo.</strong></p>
             </div>
 
             <!-- Botones de Selección DUA -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
                 <!-- Opción Visual -->
-                <div class="dua-module bg-space-900 border-2 border-blue-500/50 p-6 rounded-lg text-center" onclick="showDuaContent('video')">
+                <div class="dua-module bg-space-900 border-2 border-blue-500/50 p-6 rounded-lg text-center hover:border-blue-500" onclick="showDuaContent('video', this)">
                     <i class="fa-solid fa-video text-4xl text-blue-400 mb-4"></i>
                     <h4 class="text-lg font-bold text-white font-mono mb-2">Canal Visual</h4>
-                    <p class="text-sm text-gray-400">Vídeo de archivo interactivo. Recomendado si prefieres esquemas visuales y ejemplos dinámicos.</p>
+                    <p class="text-sm text-gray-400">Vídeo de archivo. Esquemas dinámicos.</p>
                 </div>
                 
                 <!-- Opción Auditiva -->
-                <div class="dua-module bg-space-900 border-2 border-green-500/50 p-6 rounded-lg text-center" onclick="showDuaContent('audio')">
+                <div class="dua-module bg-space-900 border-2 border-green-500/50 p-6 rounded-lg text-center hover:border-green-500" onclick="showDuaContent('audio', this)">
                     <i class="fa-solid fa-headphones text-4xl text-green-400 mb-4"></i>
                     <h4 class="text-lg font-bold text-white font-mono mb-2">Canal Auditivo</h4>
-                    <p class="text-sm text-gray-400">Transmisión de voz cifrada. Recomendado si retienes mejor la información escuchando historias.</p>
+                    <p class="text-sm text-gray-400">Transmisión de voz cifrada. Historia y narración.</p>
                 </div>
 
-                <!-- Opción Textual -->
-                <div class="dua-module bg-space-900 border-2 border-yellow-500/50 p-6 rounded-lg text-center" onclick="showDuaContent('texto')">
-                    <i class="fa-solid fa-file-lines text-4xl text-yellow-400 mb-4"></i>
+                <!-- Opción Textual (EL PDF) -->
+                <div class="dua-module bg-space-900 border-2 border-yellow-500/50 p-6 rounded-lg text-center hover:border-yellow-500" onclick="showDuaContent('texto', this)">
+                    <i class="fa-solid fa-file-pdf text-4xl text-yellow-400 mb-4"></i>
                     <h4 class="text-lg font-bold text-white font-mono mb-2">Canal Textual</h4>
-                    <p class="text-sm text-gray-400">Manual técnico oficial de la ESA. Recomendado si prefieres leer a tu ritmo y revisar fórmulas.</p>
+                    <p class="text-sm text-gray-400">Manual oficial en PDF. Fórmulas a tu propio ritmo.</p>
+                </div>
+
+                <!-- Opción Gráfica (LA INFOGRAFÍA) -->
+                <div class="dua-module bg-space-900 border-2 border-purple-500/50 p-6 rounded-lg text-center hover:border-purple-500" onclick="showDuaContent('esquema', this)">
+                    <i class="fa-solid fa-project-diagram text-4xl text-purple-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white font-mono mb-2">Canal Gráfico</h4>
+                    <p class="text-sm text-gray-400">Infografía visual y mapa conceptual.</p>
                 </div>
             </div>
 
-            <!-- Contenedores de Contenido (Ocultos por defecto, se muestran al hacer clic) -->
+            <!-- Contenedores de Contenido -->
             
-            <!-- Contenido Visual (Video) -->
+            <!-- Contenido Visual (Video Real YouTube 1) -->
             <div id="dua-video" class="dua-content bg-space-800 border border-blue-500/30 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(59,130,246,0.2)]">
                 <div class="bg-blue-900/40 p-3 border-b border-blue-500/30 flex items-center justify-between">
-                    <h4 class="font-mono font-bold text-blue-300"><i class="fa-brands fa-youtube mr-2"></i> Módulo Interactivo EdPuzzle</h4>
-                    <span class="text-xs font-mono text-gray-400">Duración est: 6:45m</span>
+                    <h4 class="font-mono font-bold text-blue-300"><i class="fa-brands fa-youtube mr-2"></i> Enlace Seguro ESA: Módulo Termodinámico</h4>
+                    <span class="text-xs font-mono text-gray-400">Estado: En línea</span>
                 </div>
-                <div class="p-6 text-center">
-                    <div class="aspect-video bg-black rounded border border-gray-700 flex flex-col items-center justify-center relative group">
-                        <i class="fa-brands fa-youtube text-6xl text-red-600 group-hover:scale-110 transition-transform mb-4 cursor-pointer"></i>
-                        <p class="text-gray-400 font-mono text-sm">[Simulación de reproductor EdPuzzle]</p>
-                        <p class="text-xs text-gray-500 mt-2 max-w-md">El vídeo se pausará en los minutos 2:15, 4:30 y 6:00 para realizar preguntas de control de comprensión.</p>
+                <div class="p-6">
+                    <div class="aspect-video w-full max-w-4xl mx-auto rounded overflow-hidden shadow-lg border border-gray-600">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dw3YcDAXovQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
 
-            <!-- Contenido Auditivo (Podcast) -->
+            <!-- Contenido Auditivo (Video Real YouTube 2 - Podcast) -->
             <div id="dua-audio" class="dua-content bg-space-800 border border-green-500/30 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(34,197,94,0.2)]">
                 <div class="bg-green-900/40 p-3 border-b border-green-500/30 flex items-center justify-between">
                     <h4 class="font-mono font-bold text-green-300"><i class="fa-solid fa-podcast mr-2"></i> Transmisión: "Diario de a bordo"</h4>
                     <span class="text-xs font-mono text-gray-400">Frecuencia: 144.5 MHz</span>
                 </div>
                 <div class="p-6">
-                    <div class="bg-space-900 border border-gray-700 rounded-lg p-6 flex flex-col items-center">
-                        <div class="w-full flex items-center justify-between mb-4">
-                            <span class="text-xs font-mono text-gray-400">0:00</span>
-                            <!-- Simulación de barra de progreso -->
-                            <div class="flex-1 mx-4 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                <div class="w-1/3 h-full bg-green-500"></div>
-                            </div>
-                            <span class="text-xs font-mono text-gray-400">-5:20</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <button class="w-12 h-12 rounded-full bg-space-800 hover:bg-space-700 flex items-center justify-center border border-gray-600 transition-colors">
-                                <i class="fa-solid fa-backward text-gray-300"></i>
-                            </button>
-                            <button class="w-14 h-14 rounded-full bg-green-600 hover:bg-green-700 flex items-center justify-center text-white shadow-lg transition-transform hover:scale-105">
-                                <i class="fa-solid fa-play text-xl ml-1"></i>
-                            </button>
-                            <button class="w-12 h-12 rounded-full bg-space-800 hover:bg-space-700 flex items-center justify-center border border-gray-600 transition-colors">
-                                <i class="fa-solid fa-forward text-gray-300"></i>
-                            </button>
-                        </div>
-                        <div class="mt-6 w-full">
-                            <details class="bg-space-800 border border-gray-700 rounded p-3 cursor-pointer">
-                                <summary class="font-mono text-sm text-green-400 focus:outline-none">Descargar Transcripción (PDF)</summary>
-                                <p class="text-xs text-gray-400 mt-2 font-sans italic">"Día 43. El sistema de calefacción ha fallado temporalmente. He observado que al bajar la temperatura, los medidores de presión de los tanques de oxígeno también han descendido drásticamente. Necesito aplicar la Ley de Gay-Lussac para entender por qué..."</p>
-                            </details>
-                        </div>
+                    <p class="text-center text-gray-300 mb-6 italic">"Día 43. El sistema de calefacción ha fallado temporalmente. He observado que al bajar la temperatura, los medidores de presión de los tanques de oxígeno también han descendido drásticamente..."</p>
+                    <div class="aspect-video w-full max-w-4xl mx-auto rounded overflow-hidden shadow-lg border border-green-600/50">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/U8uwnPbX4CY" title="YouTube podcast player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
 
-            <!-- Contenido Textual (Manual) -->
+            <!-- Contenido Textual (PDF INTERACTIVO) -->
             <div id="dua-texto" class="dua-content bg-space-800 border border-yellow-500/30 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(234,179,8,0.2)]">
                 <div class="bg-yellow-900/40 p-3 border-b border-yellow-500/30 flex items-center justify-between">
-                    <h4 class="font-mono font-bold text-yellow-300"><i class="fa-solid fa-book-open mr-2"></i> Manual de Operaciones: Termodinámica</h4>
-                    <span class="text-xs font-mono text-gray-400">Rev. 2.4</span>
+                    <h4 class="font-mono font-bold text-yellow-300"><i class="fa-solid fa-file-pdf mr-2"></i> Manual de Operaciones: Termodinámica</h4>
+                    <span class="text-xs font-mono text-gray-400">Formato: Archivo Seguro (.pdf)</span>
                 </div>
-                <div class="p-6 bg-[#fdfbf7] text-gray-900">
-                    <div class="max-w-2xl mx-auto font-sans">
-                        <h5 class="text-2xl font-bold border-b-2 border-gray-300 pb-2 mb-4">Comportamiento de Gases en Entornos Hostiles</h5>
-                        <p class="mb-4 text-sm leading-relaxed">Para mantener la integridad estructural del hábitat, es imperativo comprender las relaciones entre Presión (P), Volumen (V) y Temperatura (T).</p>
-                        
-                        <div class="bg-gray-100 p-4 border-l-4 border-yellow-600 mb-6">
-                            <h6 class="font-bold text-yellow-800 mb-2">Ley de Boyle (T constante)</h6>
-                            <p class="text-sm italic mb-2">"A temperatura constante, el volumen de una masa fija de gas es inversamente proporcional a la presión que este ejerce."</p>
-                            <p class="font-mono font-bold text-center bg-white p-2 border border-gray-300">P₁ · V₁ = P₂ · V₂</p>
+                <div class="p-6 text-center">
+                    <p class="text-gray-300 mb-6">Accede al documento técnico completo haciendo clic en la portada. Contiene todas las fórmulas y supuestos prácticos desarrollados.</p>
+                    
+                    <a href="Manual de Termodinámica.pdf" target="_blank" class="inline-block relative group">
+                        <img src="portada_manual.png" alt="Portada del Manual" class="w-64 sm:w-80 mx-auto rounded shadow-[0_10px_25px_rgba(0,0,0,0.8)] border border-gray-600 transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/400x560/1a202c/e2e8f0?text=Abrir+Manual+PDF';">
+                        <div class="absolute inset-0 bg-yellow-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded backdrop-blur-sm">
+                            <span class="bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-3 px-6 rounded shadow-lg border border-yellow-400 flex items-center gap-2 transform transition-transform group-hover:scale-110">
+                                <i class="fa-solid fa-external-link-alt"></i> ABRIR DOCUMENTO
+                            </span>
                         </div>
+                    </a>
+                </div>
+            </div>
 
-                        <div class="bg-gray-100 p-4 border-l-4 border-blue-600 mb-6">
-                            <h6 class="font-bold text-blue-800 mb-2">Ley de Charles (P constante)</h6>
-                            <p class="text-sm italic mb-2">"A presión constante, el volumen de una masa fija de gas es directamente proporcional a su temperatura absoluta (Kelvin)."</p>
-                            <p class="font-mono font-bold text-center bg-white p-2 border border-gray-300">V₁ / T₁ = V₂ / T₂</p>
-                        </div>
+            <!-- Contenido Gráfico (INFOGRAFÍA) -->
+            <div id="dua-esquema" class="dua-content bg-space-800 border border-purple-500/30 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                <div class="bg-purple-900/40 p-3 border-b border-purple-500/30 flex items-center justify-between">
+                    <h4 class="font-mono font-bold text-purple-300"><i class="fa-solid fa-project-diagram mr-2"></i> Infografía de Soporte Vital</h4>
+                    <span class="text-xs font-mono text-gray-400">Esquema Visual</span>
+                </div>
+                <div class="p-6 text-center">
+                    <p class="text-gray-300 mb-6">Revisa el mapa mental con las conexiones visuales entre presión, volumen y temperatura.</p>
+                    
+                    <div class="inline-block max-w-4xl w-full relative group">
+                        <a href="Manual de Termodinámica en Marte.png" target="_blank" class="block">
+                            <img src="Manual de Termodinámica en Marte.png" alt="Infografía de las Leyes de los Gases" class="w-full rounded shadow-[0_10px_25px_rgba(0,0,0,0.8)] border border-gray-600 transition-transform duration-300 group-hover:scale-[1.02]" onerror="this.src='https://via.placeholder.com/800x450/1a202c/e2e8f0?text=Visualizador+de+Infografía';">
+                            <div class="absolute inset-0 bg-purple-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded backdrop-blur-[2px]">
+                                <span class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-6 rounded shadow-lg border border-purple-400 flex items-center gap-2 transform transition-transform group-hover:scale-110">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i> AMPLIAR INFOGRAFÍA
+                                </span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -385,7 +380,7 @@
             <!-- ENLACE AL TEST JITT -->
             <div class="mt-12 text-center bg-mars-900/20 border border-mars-500/50 p-6 rounded-lg inline-block mx-auto w-full max-w-2xl">
                 <h4 class="font-mono font-bold text-mars-300 mb-2"><i class="fa-solid fa-clipboard-check mr-2"></i> Verificación de Sistemas (JiTT)</h4>
-                <p class="text-sm text-gray-400 mb-4">Una vez hayas completado tu entrenamiento en el canal seleccionado, debes reportar tu estado a la computadora central.</p>
+                <p class="text-sm text-gray-400 mb-4">Una vez hayas completado tu entrenamiento en los canales seleccionados, debes reportar tu estado a la computadora central.</p>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSduGdwt5FUxZ3-Hhy3IbfUMNurLlioj0v1ORZxe3m1iFuNQHg/viewform?usp=dialog" target="_blank" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-mono font-bold py-2 px-6 rounded transition-colors shadow-lg shadow-purple-500/30">
                     REALIZAR TEST DE COMPRENSIÓN (JiTT) <i class="fa-solid fa-external-link-alt ml-2"></i>
                 </a>
@@ -401,7 +396,6 @@
             <p class="text-gray-400 font-mono text-sm mb-10">// ACCESO AL DISEÑO INSTRUCCIONAL: AUTORIZADO // MÓDULO FINAL FLIPPED CLASSROOM</p>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
-                
                 <!-- Modelo ADDIE en un plano técnico -->
                 <div class="blueprint-bg p-6 rounded-lg relative transform rotate-1 hover:rotate-0 transition-transform">
                     <div class="absolute -top-3 right-10 w-20 h-6 tape-masking rotate-3 tape-red"></div>
@@ -423,7 +417,7 @@
                         <li class="flex items-start">
                             <span class="bg-blue-900 text-blue-200 font-mono font-bold p-1 px-3 mr-4 rounded border border-blue-500">D</span>
                             <div>
-                                <strong class="text-white">Desarrollo:</strong> Curación y creación de vídeos interactivos (EdPuzzle), podcasts científicos, simuladores PhET y rúbricas.
+                                <strong class="text-white">Desarrollo:</strong> Curación y creación de vídeos interactivos, podcasts científicos, simuladores PhET y rúbricas.
                             </div>
                         </li>
                         <li class="flex items-start">
@@ -446,29 +440,25 @@
                     <h3 class="font-mono text-2xl font-bold mb-6 text-mars-300"><i class="fa-solid fa-universal-access mr-2"></i>Matriz DUA Aplicada</h3>
                     
                     <div class="grid gap-4">
-                        <!-- Red Afectiva -->
                         <div class="bg-yellow-100 text-gray-800 p-5 shadow-lg transform -rotate-1 relative">
                             <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-12 h-6 tape-masking -rotate-2"></div>
                             <h4 class="font-bold text-lg mb-2 text-yellow-800"><i class="fa-regular fa-heart mr-2"></i>Red Afectiva (Implicación)</h4>
-                            <p class="text-sm"><strong>El Porqué del aprendizaje:</strong> La narrativa gamificada (Soporte Vital en Marte) aporta relevancia auténtica. Los alumnos eligen su rol en la tripulación y cómo presentar el producto final (Pitch).</p>
+                            <p class="text-sm"><strong>El Porqué del aprendizaje:</strong> La narrativa gamificada aporta relevancia auténtica. Los alumnos eligen su rol en la tripulación y cómo presentar el producto final.</p>
                         </div>
 
-                        <!-- Red Reconocimiento -->
                         <div class="bg-green-100 text-gray-800 p-5 shadow-lg transform rotate-1 relative">
                             <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-12 h-6 tape-masking rotate-3"></div>
                             <h4 class="font-bold text-lg mb-2 text-green-800"><i class="fa-regular fa-eye mr-2"></i>Red de Reconocimiento (Representación)</h4>
-                            <p class="text-sm"><strong>El Qué del aprendizaje:</strong> El contenido Flipped (Espacio Individual) no es un único vídeo. Se ofrece un <em>Menú Multimodal</em>: Vídeo subtitulado (EdPuzzle), Podcast narrativo con transcripción, o texto/infografía interactiva.</p>
+                            <p class="text-sm"><strong>El Qué del aprendizaje:</strong> Se ofrece un <em>Menú Multimodal de 4 vías</em>: Vídeo, Podcast narrativo, Manual PDF e Infografía visual.</p>
                         </div>
 
-                        <!-- Red Estratégica -->
                         <div class="bg-blue-100 text-gray-800 p-5 shadow-lg transform -rotate-2 relative">
                             <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-12 h-6 tape-masking -rotate-1"></div>
                             <h4 class="font-bold text-lg mb-2 text-blue-800"><i class="fa-solid fa-gears mr-2"></i>Red Estratégica (Acción y Expresión)</h4>
-                            <p class="text-sm"><strong>El Cómo del aprendizaje:</strong> Múltiples formas de demostrar competencia en el "Pitch Final": vídeo pregrabado, maqueta 3D comentada, presentación oral en directo o póster científico interactivo.</p>
+                            <p class="text-sm"><strong>El Cómo del aprendizaje:</strong> Múltiples formas de demostrar competencia en el "Pitch Final": vídeo pregrabado, maqueta 3D comentada, presentación oral o póster científico interactivo.</p>
                         </div>
                     </div>
                 </div>
-
             </div>
             
             <div class="mt-12 text-right">
@@ -486,7 +476,6 @@
             <p class="text-gray-400 font-mono text-sm mb-12">// PROTOCOLO FLIPPED CLASSROOM ACTIVADO // FASE GRUPAL</p>
 
             <div class="relative border-l-2 border-mars-500/30 ml-3 md:ml-6 space-y-12">
-                
                 <!-- PRE-CLASE -->
                 <div class="relative pl-8 md:pl-12">
                     <div class="absolute -left-3 md:-left-4 top-0 bg-space-900 border-2 border-mars-300 w-6 md:w-8 h-6 md:h-8 rounded-full flex items-center justify-center text-mars-300 z-10 font-bold font-mono text-xs">P</div>
@@ -496,13 +485,7 @@
                             <span class="bg-purple-900/50 text-purple-300 px-3 py-1 rounded text-xs font-mono border border-purple-500">Just-in-Time Teaching</span>
                         </div>
                         <p class="text-gray-300 mb-4">Los alumnos se enfrentan al material en casa mediante un enfoque de instrucción directa asíncrona pero altamente guiada.</p>
-                        <div class="bg-space-900 p-4 rounded text-sm font-mono border-l-4 border-purple-500 mb-4">
-                            <strong>Menú DUA (A elegir):</strong><br>
-                            - <i class="fa-brands fa-youtube mr-1"></i> Vídeo en EdPuzzle sobre las Leyes de Boyle, Charles y Gay-Lussac.<br>
-                            - <i class="fa-solid fa-podcast mr-1"></i> Podcast "Diario de a bordo: Respirar en Marte" (con PDF de transcripción).<br>
-                            - <i class="fa-solid fa-book-open mr-1"></i> Infografía interactiva Genially.
-                        </div>
-                        <p class="text-sm text-mars-100 bg-mars-900/40 p-3 rounded"><i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-2"></i><strong>Cuestionario JiTT:</strong> Antes de la clase presencial, deben responder 3 preguntas breves vía Google Forms. El docente revisa las respuestas 1 hora antes de la clase para adaptar la sesión (abordar concepciones erróneas comunes).</p>
+                        <p class="text-sm text-mars-100 bg-mars-900/40 p-3 rounded"><i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-2"></i><strong>Cuestionario JiTT:</strong> Antes de la clase presencial, deben responder preguntas breves vía Google Forms para que el docente detecte concepciones erróneas comunes.</p>
                     </div>
                 </div>
 
@@ -515,17 +498,6 @@
                             <span class="bg-blue-900/50 text-blue-300 px-3 py-1 rounded text-xs font-mono border border-blue-500">Eric Mazur Method</span>
                         </div>
                         <p class="text-gray-300 mb-4">Transformación radical del espacio grupal. No hay clase magistral, hay resolución de conflictos cognitivos detectados en el JiTT.</p>
-                        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-4">
-                            <li><strong class="text-white">Minutos 0-15:</strong> Resolución de dudas masivas detectadas en el cuestionario previo.</li>
-                            <li><strong class="text-white">Minutos 15-45 (Peer Instruction):</strong> El docente lanza <em>ConceptTests</em> (preguntas trampa de opción múltiple) en pantalla (Plickers o Mentimeter).
-                                <ul class="list-circle pl-6 mt-2 text-sm text-gray-400">
-                                    <li>Fase 1: Votación individual silenciosa.</li>
-                                    <li>Fase 2: Si el acierto es entre 30% y 70%, se exige <strong>discusión con el compañero</strong> de al lado para convencerle de su respuesta.</li>
-                                    <li>Fase 3: Revotación (el porcentaje de acierto se dispara gracias a la instrucción entre pares).</li>
-                                </ul>
-                            </li>
-                            <li><strong class="text-white">Minutos 45-55:</strong> Formación de las tripulaciones (grupos base) e inicio de diseño.</li>
-                        </ul>
                     </div>
                 </div>
 
@@ -537,18 +509,7 @@
                             <h3 class="text-xl md:text-2xl font-bold text-white font-mono">Sesión 2: Simulador PhET (Descubrimiento)</h3>
                             <span class="bg-green-900/50 text-green-300 px-3 py-1 rounded text-xs font-mono border border-green-500">Aprendizaje Inductivo</span>
                         </div>
-                        <p class="text-gray-300 mb-4">Las tripulaciones usan simuladores interactivos (PhET Interactive Simulations) en sus dispositivos.</p>
-                        <p class="text-gray-400"><strong>El Reto:</strong> Determinar experimentalmente (virtual) cuántos moles de una mezcla gaseosa O2/N2 necesitan inyectar en el volumen de su hábitat para alcanzar la presión óptima a la temperatura media marciana (-60ºC).</p>
-                        <div class="mt-4 flex gap-4">
-                            <!-- Falsa foto polaroid del simulador -->
-                            <div class="polaroid transform rotate-2 w-48 text-xs hidden sm:block">
-                                <div class="bg-gray-800 h-24 mb-2 flex items-center justify-center border border-gray-600">
-                                    <i class="fa-solid fa-laptop-code text-3xl text-blue-400"></i>
-                                </div>
-                                PhET Gas Properties
-                            </div>
-                            <p class="text-sm text-gray-400 flex-1">El docente actúa estrictamente como facilitador ("Guía al lado", no "Sabio en la tarima"), resolviendo bloqueos solo cuando el grupo entero no puede avanzar, promoviendo el andamiaje.</p>
-                        </div>
+                        <p class="text-gray-300 mb-4">Las tripulaciones usan simuladores interactivos (PhET Interactive Simulations) en sus dispositivos para presurizar el hábitat a temperatura marciana.</p>
                     </div>
                 </div>
 
@@ -556,28 +517,21 @@
                 <div id="session3-card" class="relative pl-8 md:pl-12 transition-all duration-300">
                     <div class="absolute -left-3 md:-left-4 top-0 bg-space-900 border-2 border-mars-500 w-6 md:w-8 h-6 md:h-8 rounded-full flex items-center justify-center text-mars-500 z-10 font-bold font-mono text-xs">3</div>
                     <div class="bg-space-800 border border-red-700 p-6 rounded-lg shadow-lg relative">
-                        <!-- Botón interactivo para impresionar al ponente -->
                         <button onclick="triggerEmergency()" class="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded shadow-lg flex items-center gap-2 z-20 text-xs sm:text-sm transition-transform active:scale-95">
                             <i class="fa-solid fa-triangle-exclamation"></i> SIMULAR TORMENTA
                         </button>
-
                         <div class="flex justify-between items-start mb-4 flex-wrap gap-2 pr-40">
                             <h3 class="text-xl md:text-2xl font-bold text-white font-mono">Sesión 3: El Evento Inesperado</h3>
                             <span class="bg-red-900/50 text-red-300 px-3 py-1 rounded text-xs font-mono border border-red-500">Gamificación / ABP</span>
                         </div>
-                        
                         <div id="normal-text" class="text-gray-300 mb-4">
-                            <p>En medio del cálculo estequiométrico para los generadores de oxígeno, se introduce un elemento de <strong>dinámica de juego (urgencia y sorpresa)</strong>.</p>
-                            <p class="mt-2 text-sm text-gray-400"><i class="fa-solid fa-arrow-up text-mars-300 mr-2"></i> <em>(Haz clic en el botón superior derecho para ver la mecánica que se aplica en el aula)</em></p>
+                            <p>En medio del cálculo estequiométrico, se introduce un elemento de <strong>dinámica de juego (urgencia y sorpresa)</strong>. <em>(Usa el botón superior)</em></p>
                         </div>
-
                         <div id="emergency-text" class="hidden">
                             <div class="bg-red-900/40 border-2 border-red-500 p-4 rounded mb-4 font-mono">
                                 <h4 class="text-red-400 font-bold text-lg mb-2"><i class="fa-solid fa-bell-slash animate-pulse mr-2"></i> ¡ALERTA CRÍTICA: TORMENTA DE POLVO GLOBAL!</h4>
-                                <p class="text-white">Los paneles solares están cubiertos. La temperatura del hábitat caerá a -100ºC en 40 minutos. La presión interna colapsará según la Ley de Gay-Lussac.</p>
-                                <p class="text-yellow-400 mt-2"><strong>MISIÓN ABREVIADA:</strong> Recalcular el nuevo volumen necesario o añadir calefactores de isótopos antes de que acabe la clase. Si suena el timbre y no hay cálculos, la colonia se pierde.</p>
+                                <p class="text-white">Los paneles solares están cubiertos. Recalcular el volumen necesario o añadir calefactores antes de que acabe la clase o la colonia se pierde.</p>
                             </div>
-                            <p class="text-sm text-gray-300"><em>Justificación didáctica:</em> Se aplica la presión de tiempo (mecánica de juego) para fomentar el trabajo colaborativo bajo estrés simulado, consolidando la aplicación práctica de la teoría en un contexto narrativo (Aprendizaje Basado en Problemas).</p>
                         </div>
                     </div>
                 </div>
@@ -590,24 +544,9 @@
                             <h3 class="text-xl md:text-2xl font-bold text-white font-mono">Sesión 4: El "Pitch" a la ESA</h3>
                             <span class="bg-yellow-900/50 text-yellow-300 px-3 py-1 rounded text-xs font-mono border border-yellow-500">Evaluación Formativa/Sumativa</span>
                         </div>
-                        <p class="text-gray-300 mb-4">Culminación del proyecto grupal. Presentación de los diseños de soporte vital.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                            <div class="border border-gray-600 p-4 rounded">
-                                <h4 class="font-bold text-mars-300 mb-2 font-mono text-sm border-b border-gray-600 pb-1">Herramientas de Evaluación</h4>
-                                <ul class="text-sm text-gray-400 space-y-1">
-                                    <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Rúbrica compartida en Classroom desde el Sol 1.</li>
-                                    <li><i class="fa-solid fa-users text-blue-400 mr-2"></i> Coevaluación entre pares (evalúan el Pitch de otros equipos).</li>
-                                    <li><i class="fa-solid fa-bullseye text-red-400 mr-2"></i> Diana de autoevaluación grupal (¿Cómo trabajamos?).</li>
-                                </ul>
-                            </div>
-                            <div class="paper-scrap p-4 transform rotate-1 text-sm">
-                                <h4 class="font-bold text-black mb-1 font-typewriter">Nota del Docente:</h4>
-                                <p class="text-gray-800 font-typewriter">Se evalúa el proceso deductivo y el cálculo matemático de las leyes, no solo el formato final. El Flipped Learning ha permitido dedicar el 100% del tiempo de estas 4 sesiones a crear, aplicar y evaluar (niveles superiores de la taxonomía de Bloom).</p>
-                            </div>
-                        </div>
+                        <p class="text-gray-300 mb-4">Culminación del proyecto grupal. Presentación de los diseños de soporte vital con rúbrica y coevaluación.</p>
                     </div>
                 </div>
-
             </div>
             
             <div class="mt-16 text-center">
@@ -619,61 +558,46 @@
     </main>
 
     <script>
-        // Lógica de Navegación SPA (Single Page Application)
         function navigate(pageId) {
-            // Ocultar todas las secciones
-            document.querySelectorAll('.page-section').forEach(el => {
-                el.classList.remove('active');
-            });
-            
-            // Mostrar la sección seleccionada
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             
-            // Actualizar el menú visualmente (Escritorio)
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('text-mars-300', 'border-mars-500');
                 btn.classList.add('border-transparent');
-                
-                // Un poco "hacky" pero funciona para los nombres de las funciones vs ids
                 if(btn.getAttribute('onclick').includes(pageId)) {
                     btn.classList.add('text-mars-300', 'border-mars-500');
                     btn.classList.remove('border-transparent');
                 }
             });
-
-            // Cerrar menú móvil si está abierto
             document.getElementById('mobile-menu').classList.add('hidden');
-            
-            // Scroll arriba suave
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Lógica para mostrar contenido del Menú DUA
-        function showDuaContent(type) {
-            // Ocultar todos los contenidos
-            document.querySelectorAll('.dua-content').forEach(el => {
-                el.classList.remove('active');
-            });
-            
-            // Mostrar el seleccionado
+        // Lógica para mostrar contenido del Menú DUA y resaltar el botón
+        function showDuaContent(type, buttonElement) {
+            document.querySelectorAll('.dua-content').forEach(el => el.classList.remove('active'));
             document.getElementById('dua-' + type).classList.add('active');
             
-            // Resaltar el botón seleccionado
+            // Reiniciar bordes
             document.querySelectorAll('.dua-module').forEach(el => {
-                el.style.borderColor = 'rgba(75, 85, 99, 0.5)'; // reset to gray-600 approx
+                el.style.borderColor = 'rgba(75, 85, 99, 0.5)'; // gris original
+                el.style.transform = 'translateY(0)';
             });
-            event.currentTarget.style.borderColor = '#c1440e'; // mars-500
+            
+            // Aplicar borde de color específico al seleccionado
+            if(type === 'video') buttonElement.style.borderColor = '#3b82f6'; // azul
+            if(type === 'audio') buttonElement.style.borderColor = '#22c55e'; // verde
+            if(type === 'texto') buttonElement.style.borderColor = '#eab308'; // amarillo
+            if(type === 'esquema') buttonElement.style.borderColor = '#a855f7'; // morado
+            
+            buttonElement.style.transform = 'translateY(-5px)';
         }
 
-        // Lógica Menú Móvil
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Lógica Gamificación (Botón Alarma)
         let emergencyActive = false;
         function triggerEmergency() {
             const card = document.getElementById('session3-card');
@@ -682,28 +606,21 @@
             const btn = card.querySelector('button');
             
             emergencyActive = !emergencyActive;
-            
             if(emergencyActive) {
-                // Activar Emergencia
                 document.body.classList.add('emergency-mode');
                 card.querySelector('.bg-space-800').classList.add('border-red-500');
                 card.querySelector('.bg-space-800').classList.remove('border-red-700');
-                
                 normalText.classList.add('hidden');
                 emergencyText.classList.remove('hidden');
-                
                 btn.innerHTML = '<i class="fa-solid fa-power-off"></i> SISTEMA RESTAURADO';
                 btn.classList.replace('bg-red-600', 'bg-green-600');
                 btn.classList.replace('hover:bg-red-700', 'hover:bg-green-700');
             } else {
-                // Desactivar Emergencia
                 document.body.classList.remove('emergency-mode');
                 card.querySelector('.bg-space-800').classList.remove('border-red-500');
                 card.querySelector('.bg-space-800').classList.add('border-red-700');
-                
                 normalText.classList.remove('hidden');
                 emergencyText.classList.add('hidden');
-                
                 btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> SIMULAR TORMENTA';
                 btn.classList.replace('bg-green-600', 'bg-red-600');
                 btn.classList.replace('hover:bg-green-700', 'hover:bg-red-700');
