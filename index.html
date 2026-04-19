@@ -212,7 +212,8 @@
                 <div class="absolute -top-6 -right-6 bg-red-600 text-white font-mono font-bold px-4 py-2 rounded-full shadow-lg transform rotate-12 flex items-center gap-2">
                     <i class="fa-solid fa-hand-pointer"></i> ¡PASO 1!
                 </div>
-                <img src="martesuperficie.png" alt="Superficie marciana - Acceso al test" class="w-full h-auto border-2 border-gray-300" onerror="this.src='https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&q=80&w=400';">
+                <!-- Imagen test aptitud -->
+                <img src="./martesuperficie.png" alt="Superficie marciana - Acceso al test" class="w-full h-auto border-2 border-gray-300" onerror="this.src='https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&q=80&w=400';">
                 <div class="mt-3 bg-red-100 text-red-800 p-2 border-2 border-red-800 font-bold">
                     [ CLICK AQUÍ PARA REALIZAR EL TEST DE APTITUD ]
                 </div>
@@ -227,7 +228,7 @@
                             <h1 class="text-3xl font-bold tracking-tighter">AGENCIA ESPACIAL EUROPEA (ESA)</h1>
                             <p class="text-sm text-gray-600 font-sans mt-1">Dirección de Exploración Humana y Robótica</p>
                         </div>
-                        <img src="ESA.transparent.png" alt="ESA Logo" class="h-12 opacity-50 filter grayscale" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/ESA_logo_simple.svg/512px-ESA_logo_simple.svg.png';">
+                        <img src="./ESA.transparent.png" alt="ESA Logo" class="h-12 opacity-50 filter grayscale" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/ESA_logo_simple.svg/512px-ESA_logo_simple.svg.png';">
                     </div>
 
                     <p class="mb-4 text-red-700 font-bold">ASUNTO: CONVOCATORIA URGENTE - PROYECTO BIO-GÉNESIS</p>
@@ -244,7 +245,7 @@
                     
                     <div class="mt-8">
                         <p>Firmado,</p>
-                        <img src="FirmaVance.png" alt="Firma Oficial" class="h-16 opacity-70 my-2 filter contrast-200" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/f/fa/Signature_of_John_Hancock.svg';">
+                        <img src="./FirmaVance.png" alt="Firma Oficial" class="h-16 opacity-70 my-2 filter contrast-200" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/f/fa/Signature_of_John_Hancock.svg';">
                         <p class="font-bold">Dra. E. K. Vance</p>
                         <p class="text-sm font-sans text-gray-500">Directora de Operaciones Extraplanetarias</p>
                     </div>
@@ -275,7 +276,7 @@
                 <p class="text-gray-300 mb-4">Cadete, para sobrevivir en el entorno de baja presión del Cráter Jezero, debes dominar las Leyes de los Gases (Boyle, Charles y Gay-Lussac). La ESA te proporciona <strong>cuatro canales diferentes</strong> para adquirir este conocimiento crítico antes de la próxima sesión en el centro de mando. <strong>Elige los que mejor se adapten a tu perfil cognitivo.</strong></p>
             </div>
 
-            <!-- Botones de Selección DUA -->
+            <!-- Botones de Selección DUA (AHORA 4 COLUMNAS) -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
                 <!-- Opción Visual -->
                 <div class="dua-module bg-space-900 border-2 border-blue-500/50 p-6 rounded-lg text-center hover:border-blue-500" onclick="showDuaContent('video', this)">
@@ -335,7 +336,7 @@
                 </div>
             </div>
 
-            <!-- Contenido Textual (PDF INTERACTIVO - RUTAS ACTUALIZADAS) -->
+            <!-- Contenido Textual (PDF INTERACTIVO - ENLACE EXACTO) -->
             <div id="dua-texto" class="dua-content bg-space-800 border border-yellow-500/30 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(234,179,8,0.2)]">
                 <div class="bg-yellow-900/40 p-3 border-b border-yellow-500/30 flex items-center justify-between">
                     <h4 class="font-mono font-bold text-yellow-300"><i class="fa-solid fa-file-pdf mr-2"></i> Manual de Operaciones: Termodinámica</h4>
@@ -344,8 +345,10 @@
                 <div class="p-6 text-center">
                     <p class="text-gray-300 mb-6">Accede al documento técnico completo haciendo clic en la portada. Contiene todas las fórmulas y supuestos prácticos desarrollados.</p>
                     
-                    <a href="manualtermodinamica.pdf" target="_blank" class="inline-block relative group">
-                        <img src="portada_manual.png" alt="Portada del Manual" class="w-64 sm:w-80 mx-auto rounded shadow-[0_10px_25px_rgba(0,0,0,0.8)] border border-gray-600 transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/400x560/1a202c/e2e8f0?text=Abrir+Manual+PDF';">
+                    <!-- ENLACE AL PDF: manualtermodinamica.pdf -->
+                    <a href="./manualtermodinamica.pdf" target="_blank" class="inline-block relative group">
+                        <!-- MINIATURA: Usa la misma infografía manualtermodinamica.png para que no falle -->
+                        <img src="./manualtermodinamica.png" alt="Portada del Manual" class="w-64 sm:w-80 mx-auto rounded shadow-[0_10px_25px_rgba(0,0,0,0.8)] border border-gray-600 transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/400x560/1a202c/e2e8f0?text=Abrir+Manual+PDF';">
                         <div class="absolute inset-0 bg-yellow-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded backdrop-blur-sm">
                             <span class="bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-3 px-6 rounded shadow-lg border border-yellow-400 flex items-center gap-2 transform transition-transform group-hover:scale-110">
                                 <i class="fa-solid fa-external-link-alt"></i> ABRIR DOCUMENTO
@@ -355,7 +358,7 @@
                 </div>
             </div>
 
-            <!-- Contenido Gráfico (INFOGRAFÍA - RUTAS ACTUALIZADAS) -->
+            <!-- Contenido Gráfico (INFOGRAFÍA - ENLACE EXACTO) -->
             <div id="dua-esquema" class="dua-content bg-space-800 border border-purple-500/30 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.2)]">
                 <div class="bg-purple-900/40 p-3 border-b border-purple-500/30 flex items-center justify-between">
                     <h4 class="font-mono font-bold text-purple-300"><i class="fa-solid fa-project-diagram mr-2"></i> Infografía de Soporte Vital</h4>
@@ -365,8 +368,10 @@
                     <p class="text-gray-300 mb-6">Revisa el mapa mental con las conexiones visuales entre presión, volumen y temperatura.</p>
                     
                     <div class="inline-block max-w-4xl w-full relative group">
-                        <a href="manualtermodinamica.png" target="_blank" class="block">
-                            <img src="manualtermodinamica.png" alt="Infografía de las Leyes de los Gases" class="w-full rounded shadow-[0_10px_25px_rgba(0,0,0,0.8)] border border-gray-600 transition-transform duration-300 group-hover:scale-[1.02]" onerror="this.src='https://via.placeholder.com/800x450/1a202c/e2e8f0?text=Visualizador+de+Infografía';">
+                        <!-- ENLACE A LA INFOGRAFÍA: manualtermodinamica.png -->
+                        <a href="./manualtermodinamica.png" target="_blank" class="block">
+                            <!-- IMAGEN DE LA INFOGRAFÍA: manualtermodinamica.png -->
+                            <img src="./manualtermodinamica.png" alt="Infografía de las Leyes de los Gases" class="w-full rounded shadow-[0_10px_25px_rgba(0,0,0,0.8)] border border-gray-600 transition-transform duration-300 group-hover:scale-[1.02]" onerror="this.src='https://via.placeholder.com/800x450/1a202c/e2e8f0?text=Visualizador+de+Infografía';">
                             <div class="absolute inset-0 bg-purple-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded backdrop-blur-[2px]">
                                 <span class="bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-6 rounded shadow-lg border border-purple-400 flex items-center gap-2 transform transition-transform group-hover:scale-110">
                                     <i class="fa-solid fa-magnifying-glass-plus"></i> AMPLIAR INFOGRAFÍA
