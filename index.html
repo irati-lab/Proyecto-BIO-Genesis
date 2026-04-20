@@ -253,27 +253,54 @@
                 </a>
 
                 <!-- Carta Oficial (Centro) -->
-                <div class="relative z-10 max-w-3xl mx-auto lg:ml-0 mt-10">
-                    <div class="paper-scrap p-8 sm:p-12 font-typewriter text-lg leading-relaxed transform -rotate-1">
-                        <div class="border-b-2 border-gray-400 pb-4 mb-6 flex justify-between items-end">
-                            <div>
-                                <h1 class="text-3xl font-bold tracking-tighter">AGENCIA ESPACIAL EUROPEA (ESA)</h1>
-                                <p class="text-sm text-gray-600 font-sans mt-1">Dirección de Exploración Humana y Robótica</p>
+            <div class="relative z-10 max-w-3xl mx-auto lg:ml-0 mt-10">
+                <div class="paper-scrap p-8 sm:p-12 font-typewriter text-lg leading-relaxed transform -rotate-1">
+                    <div class="border-b-2 border-gray-400 pb-4 mb-6 flex justify-between items-end">
+                        <div>
+                            <h1 class="text-3xl font-bold tracking-tighter">AGENCIA ESPACIAL EUROPEA (ESA)</h1>
+                            <p class="text-sm text-gray-600 font-sans mt-1">Dirección de Exploración Humana y Robótica</p>
+                        </div>
+                        <img src="./ESA.transparent.png" alt="ESA Logo" class="h-12 opacity-50 filter grayscale" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/ESA_logo_simple.svg/512px-ESA_logo_simple.svg.png';">
+                    </div>
+
+                    <p class="mb-4 text-red-700 font-bold">ASUNTO: CONVOCATORIA URGENTE - PROYECTO BIO-GÉNESIS</p>
+                    <p class="mb-4">Estimados Cadetes de Ciencias (4º ESO):</p>
+                    <p class="mb-4">La colonización de Marte ya no es ciencia ficción, es un problema de termodinámica y estequiometría. Nuestra primera avanzadilla robótica ha finalizado la estructura de titanio del "Hábitat Ares I" en el cráter Jezero. Ahora enfrentamos el reto crítico: llenarlo de una atmósfera respirable.</p>
+                    <p class="mb-4">El exterior es letal: 95% de CO₂, presiones que no superan los 600 Pascales (casi el vacío) y temperaturas nocturnas de -80ºC. Su equipo de ingeniería debe establecer los protocolos termodinámicos para presurizar el hábitat con un "aire artificial".</p>
+                    
+                    <div class="bg-gray-200 p-4 border-l-4 border-red-700 my-6 font-sans text-sm">
+                        <h3 class="font-bold text-black mb-2"><i class="fa-solid fa-crosshairs text-red-600 mr-2"></i>OBJETIVOS DE LA MISIÓN:</h3>
+                        <p class="text-gray-800 font-mono text-xs mb-2 bg-white p-2 border border-gray-300 rounded shadow-inner">
+                            <strong>PARÁMETROS OBJETIVO (INTERIOR HÁBITAT):</strong><br>
+                            > PRESIÓN: 1 Atmósfera (101325 Pa)<br>
+                            > TEMPERATURA: 20 ºC (293 K)<br>
+                            > MEZCLA DE GASES: 78% Nitrógeno (N₂), 21% Oxígeno (O₂)
+                        </p>
+                        <p class="text-gray-800">
+                            <strong>1. Termodinámica:</strong> Calcular cuántos tanques de gas a alta presión (almacenados en el frío exterior) deben inyectarse en el volumen rígido del hábitat para alcanzar exactamente los parámetros objetivo. Deberán aplicar la Ley General de los Gases.<br>
+                            <strong>2. Pitch a la ESA:</strong> Presentar el diseño y los cálculos de su sistema de presurización al comité de inversores en 5 Soles (sesiones), usando un prototipo 3D, vídeo o esquema.
+                        </p>
+                    </div>
+
+                    <!-- ARCHIVO ADJUNTO: ECLSS -->
+                    <div class="my-6 bg-space-900 border border-blue-500/50 rounded-lg shadow-lg">
+                        <button onclick="toggleECLSS()" class="w-full bg-blue-900/40 hover:bg-blue-900/60 text-blue-300 font-mono font-bold p-3 text-left flex justify-between items-center transition-colors">
+                            <span><i class="fa-solid fa-book-journal-whills mr-2"></i> ARCHIVO ADJUNTO: Parámetros del Soporte Vital (ECLSS)</span>
+                            <i id="eclss-icon" class="fa-solid fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div id="eclss-content" class="hidden p-5 text-sm font-sans text-gray-300 border-t border-blue-500/30">
+                            <p class="mb-4 text-white">En misiones espaciales reales, un <strong>ECLSS</strong> (<em>Environmental Control and Life Support System</em>) es el conjunto de tecnologías que simulan las condiciones de la Tierra. El problema principal que debéis resolver ataca dos pilares:</p>
+                            <ul class="space-y-4 mb-4 ml-2">
+                                <li><strong class="text-blue-400 font-mono"><i class="fa-solid fa-wind mr-2"></i>1. Atmósfera y Presión:</strong> No podemos usar Oxígeno puro al 100% porque a 1 atm es altamente inflamable (riesgo de explosión). El ECLSS debe inyectar una mezcla de gas inerte (N₂) y reactivo (O₂) para mantener 1 atm de presión constante, tal como respiramos en la Tierra. <em>(Aquí usaréis la Ley de Boyle para calcular volúmenes de descompresión)</em>.</li>
+                                <li><strong class="text-red-400 font-mono"><i class="fa-solid fa-temperature-half mr-2"></i>2. Control Térmico:</strong> El gas se almacena fuera a -60ºC. Al inyectarlo al hábitat y calentarlo a +20ºC para que la tripulación no muera de frío, el gas se expandirá e intentará subir la presión del hábitat. <em>(Debéis usar las leyes de Charles y Gay-Lussac para prever este cambio y no reventar las paredes de titanio)</em>.</li>
+                            </ul>
+                            <div class="bg-blue-900/30 p-3 rounded border border-blue-500/50 text-blue-200 mt-6 shadow-inner">
+                                <i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-2 animate-pulse"></i> <strong>Atención Cadetes:</strong> No estáis calculando la presión de un gas abstracto en un libro de texto. Vuestros cálculos determinarán si inyectamos demasiado aire (reventando el módulo por exceso de presión) o muy poco (provocando la muerte de la tripulación por hipoxia). La precisión matemática salva vidas.
                             </div>
-                            <img src="./ESA.transparent.png" alt="ESA Logo" class="h-12 opacity-50 filter grayscale" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/ESA_logo_simple.svg/512px-ESA_logo_simple.svg.png';">
                         </div>
+                    </div>
 
-                        <p class="mb-4 text-red-700 font-bold">ASUNTO: CONVOCATORIA URGENTE - PROYECTO BIO-GÉNESIS</p>
-                        <p class="mb-4">Estimados Cadetes de Ciencias (4º ESO):</p>
-                        <p class="mb-4">La colonización de Marte ya no es ciencia ficción, es un problema de termodinámica, cinética química y estequiometría. Nuestra primera avanzadilla robótica ha establecido los cimientos del "Hábitat Ares I" en el cráter Jezero, pero enfrentamos un reto crítico: el soporte vital.</p>
-                        <p class="mb-4">La atmósfera exterior es un 95% de CO2 a una presión media de 600 Pa. Letal. Necesitamos mentes jóvenes y no contaminadas por la ingeniería tradicional para resolver esto.</p>
-                        
-                        <div class="bg-gray-200 p-4 border-l-4 border-red-700 my-6 font-sans text-sm">
-                            <h3 class="font-bold text-black mb-2"><i class="fa-solid fa-crosshairs text-red-600 mr-2"></i>OBJETIVO DE LA MISIÓN:</h3>
-                            <p class="text-gray-800">Diseñar el sistema completo de presurización y oxigenación del hábitat. Deberán aplicar las Leyes de los Gases y calcular las reacciones químicas necesarias para generar O2 a partir del suelo marciano, presentando un modelo viable (Pitch / Prototipo) al comité de inversores en 5 Soles (sesiones).</p>
-                        </div>
-
-                        <p class="mb-4">El fracaso no es una opción. Su primer deber es rellenar el <strong>Test de Aptitud</strong> (ver imagen adjunta) para que la computadora central analice sus perfiles y asigne roles en la tripulación.</p>
+                    <p class="mb-4">El fracaso no es una opción. Su primer deber es rellenar el <strong>Test de Aptitud</strong> (ver imagen adjunta) para que la computadora central analice sus perfiles y asigne roles en la tripulación.</p>
                         
                         <div class="mt-8">
                             <p>Firmado,</p>
@@ -617,9 +644,15 @@
                                 </ul>
                             </div>
 
-                            <button onclick="openRubric()" class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 text-white font-mono font-bold py-3 px-6 rounded shadow-[0_0_15px_rgba(234,179,8,0.4)] transition-all transform hover:scale-105 border border-yellow-400">
-                                <i class="fa-solid fa-check-double text-xl"></i> ABRIR RÚBRICA DE EVALUACIÓN
-                            </button>
+                            <div class="flex flex-wrap gap-4 mt-6">
+                                <button onclick="openDossier()" class="inline-flex items-center gap-2 bg-blue-900/50 hover:bg-blue-800 text-blue-300 hover:text-white font-mono font-bold py-3 px-6 rounded shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all transform hover:scale-105 border border-blue-500">
+                                    <i class="fa-solid fa-folder-open text-xl"></i> REQUISITOS DEL PITCH (DOSSIER)
+                                </button>
+                                
+                                <button onclick="openRubric()" class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 text-white font-mono font-bold py-3 px-6 rounded shadow-[0_0_15px_rgba(234,179,8,0.4)] transition-all transform hover:scale-105 border border-yellow-400">
+                                    <i class="fa-solid fa-check-double text-xl"></i> RÚBRICA DE EVALUACIÓN
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -631,6 +664,81 @@
             </section>
 
         </main>
+    </div>
+
+    <!-- ==================== DOSSIER DEL PROYECTO (MODAL) ==================== -->
+    <div id="dossier-modal" class="hidden fixed inset-0 z-[60] bg-black/90 backdrop-blur-md overflow-y-auto pt-10 pb-20 px-4">
+        <div class="max-w-5xl mx-auto bg-space-800 border-2 border-blue-500 rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.3)] overflow-hidden">
+            
+            <!-- Modal Header -->
+            <div class="bg-space-900 border-b border-blue-500/50 p-6 flex justify-between items-center sticky top-0 z-10">
+                <div>
+                    <h2 class="text-2xl font-mono font-bold text-blue-400"><i class="fa-solid fa-folder-open mr-2"></i> DOSSIER DEL PROYECTO: REQUISITOS DEL PITCH</h2>
+                    <p class="text-gray-400 text-sm mt-1">Documento guía para la presentación final ante la ESA.</p>
+                </div>
+                <button onclick="closeDossier()" class="text-gray-400 hover:text-red-500 text-3xl transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 md:p-8 text-gray-300 font-sans space-y-8">
+                
+                <!-- Advertencia Histórica -->
+                <div class="bg-red-900/20 border border-red-600 rounded-lg p-6 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="md:w-1/2">
+                        <h3 class="text-xl font-bold text-red-500 font-mono mb-3"><i class="fa-solid fa-triangle-exclamation animate-pulse mr-2"></i> LECCIÓN HISTÓRICA: EL APOLO 1</h3>
+                        <p class="mb-4 text-sm leading-relaxed">Vuestro Pitch debe explicar <strong>por qué no vais a usar oxígeno puro al 100%</strong> en el hábitat marciano. El 27 de enero de 1967, la tripulación del Apolo 1 falleció en un simulador debido a un incendio incontrolable. La culpa la tuvo la atmósfera de oxígeno puro presurizado: cualquier chispa se convierte en una bomba.</p>
+                        <p class="text-sm font-bold text-white">Vuestra mezcla debe ser segura: 78% Nitrógeno y 21% Oxígeno.</p>
+                    </div>
+                    <div class="md:w-1/2 w-full aspect-video rounded border border-red-500/50 overflow-hidden shadow-lg bg-black">
+                        <!-- VÍDEO DEL APOLO 1 -->
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Caod_B25gRM" title="Apolo 1 Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- Los 3 Puntos a Presentar -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white font-mono mb-6 border-b border-gray-700 pb-2">Índice Obligatorio de la Presentación:</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Punto 1 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-900/50 border border-blue-500 flex items-center justify-center font-bold text-blue-400 font-mono text-xl flex-shrink-0">1</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-blue-300 mb-1">Cálculo del Volumen Inicial (Geometría y Boyle)</h4>
+                                <p class="text-sm">Debéis mostrar las dimensiones estimadas de vuestro Hábitat Ares I y calcular qué volumen total de "aire artificial" necesitáis introducir para alcanzar la presión interior de <strong>1 atmósfera (101.325 Pa)</strong>.</p>
+                            </div>
+                        </div>
+
+                        <!-- Punto 2 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-900/50 border border-yellow-500 flex items-center justify-center font-bold text-yellow-400 font-mono text-xl flex-shrink-0">2</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-yellow-300 mb-1">Control Térmico de los Tanques (Charles y Gay-Lussac)</h4>
+                                <p class="text-sm">Explicad matemáticamente qué le ocurrirá al gas de los tanques exteriores (almacenados a <strong>-60ºC</strong>) cuando se introduzcan en el módulo vital y se calienten a <strong>+20ºC</strong>. Demostrad que la presión no reventará las paredes de titanio.</p>
+                            </div>
+                        </div>
+
+                        <!-- Punto 3 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-teal-900/50 border border-teal-500 flex items-center justify-center font-bold text-teal-400 font-mono text-xl flex-shrink-0">3</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-teal-300 mb-1">Contingencia Química: Proyecto MOXIE (Estequiometría)</h4>
+                                <p class="text-sm">Los tanques traídos desde la Tierra se agotarán. Vuestro Pitch debe incluir un sistema de producción in-situ inspirado en el <strong>MOXIE</strong> (Mars Oxygen In-Situ Resource Utilization Experiment) de la NASA. Debéis plantear la ecuación química ajustada de la electrólisis del Dióxido de Carbono marciano (CO₂) para obtener Oxígeno (O₂) y calcular cuánto CO₂ marciano necesitamos aspirar para sobrevivir 1 año.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center pt-4">
+                    <button onclick="closeDossier()" class="bg-blue-600 hover:bg-blue-700 text-white font-mono font-bold py-2 px-8 rounded transition-colors shadow-lg shadow-blue-500/30">
+                        ENTENDIDO. VOLVER A LA BASE.
+                    </button>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <!-- ==================== RÚBRICA INTERACTIVA (MODAL) ==================== -->
@@ -1146,17 +1254,21 @@
     </div>
 
     <script>
-        function navigate(pageId) {
-            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('text-mars-300', 'border-mars-500');
-                btn.classList.add('border-transparent');
-                if(btn.getAttribute('onclick').includes(pageId)) {
-                    btn.classList.add('text-mars-300', 'border-mars-500');
-                    btn.classList.remove('border-transparent');
-                }
+        // === LÓGICA DE MODALES (DOSSIER Y RÚBRICA) ===
+        function openDossier() {
+            document.getElementById('dossier-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDossier() {
+            document.getElementById('dossier-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openRubric() {
+            document.getElementById('rubric-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
             });
             document.getElementById('mobile-menu').classList.add('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1272,6 +1384,20 @@
                 td.classList.remove('bg-green-900/60', 'border-green-500', 'border-4', 'scale-[1.02]', 'shadow-lg', 'relative', 'z-10');
                 td.classList.add('border-gray-700');
             });
+        }
+
+        // Lógica para desplegar la información del ECLSS
+        function toggleECLSS() {
+            const content = document.getElementById('eclss-content');
+            const icon = document.getElementById('eclss-icon');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
         }
 
         function toggleTerminal() {
