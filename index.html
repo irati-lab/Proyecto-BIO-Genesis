@@ -163,6 +163,16 @@
         ::-webkit-scrollbar-thumb { background: #c1440e; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #8a310a; }
 
+        /* Estilos Rúbrica Interactiva */
+        .score-cell {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .score-cell:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
         /* Estilos Modo Terminal Docente */
         .terminal-slide {
             display: none;
@@ -593,9 +603,23 @@
                         <div class="bg-space-800 border border-gray-700 p-6 rounded-lg shadow-lg">
                             <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
                                 <h3 class="text-xl md:text-2xl font-bold text-white font-mono">Sesión 4: El "Pitch" a la ESA</h3>
-                                <span class="bg-yellow-900/50 text-yellow-300 px-3 py-1 rounded text-xs font-mono border border-yellow-500">Evaluación Formativa/Sumativa</span>
+                                <span class="bg-yellow-900/50 text-yellow-300 px-3 py-1 rounded text-xs font-mono border border-yellow-500">Evaluación Sumativa DUA</span>
                             </div>
-                            <p class="text-gray-300 mb-4">Culminación del proyecto grupal. Presentación de los diseños de soporte vital con rúbrica y coevaluación.</p>
+                            <p class="text-gray-300 mb-4">Culminación del proyecto grupal. La tripulación debe presentar a los inversores de la ESA su sistema de soporte vital terminado.</p>
+                            
+                            <div class="bg-space-900 border border-gray-600 p-4 rounded-lg mb-6">
+                                <h4 class="text-mars-300 font-bold mb-2 font-mono text-sm"><i class="fa-solid fa-list-check mr-2"></i>FORMATOS DE ENTREGA A ELEGIR (DUA):</h4>
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-300">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-video text-blue-400"></i> 1. Vídeo pregrabado (Estilo Documental)</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-cube text-green-400"></i> 2. Maqueta 3D comentada físicamente</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-person-chalkboard text-yellow-400"></i> 3. Presentación Oral (Pitch en directo)</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-image text-purple-400"></i> 4. Póster Científico Interactivo</li>
+                                </ul>
+                            </div>
+
+                            <button onclick="openRubric()" class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 text-white font-mono font-bold py-3 px-6 rounded shadow-[0_0_15px_rgba(234,179,8,0.4)] transition-all transform hover:scale-105 border border-yellow-400">
+                                <i class="fa-solid fa-check-double text-xl"></i> ABRIR RÚBRICA DE EVALUACIÓN
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -607,6 +631,113 @@
             </section>
 
         </main>
+    </div>
+
+    <!-- ==================== RÚBRICA INTERACTIVA (MODAL) ==================== -->
+    <div id="rubric-modal" class="hidden fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm overflow-y-auto pt-10 pb-20 px-4">
+        <div class="max-w-6xl mx-auto bg-space-800 border-2 border-yellow-500 rounded-xl shadow-[0_0_40px_rgba(234,179,8,0.3)] overflow-hidden">
+            
+            <!-- Modal Header -->
+            <div class="bg-space-900 border-b border-yellow-500/50 p-6 flex justify-between items-center sticky top-0 z-10">
+                <div>
+                    <h2 class="text-2xl font-mono font-bold text-yellow-400"><i class="fa-solid fa-scale-balanced mr-2"></i> MATRIZ DE EVALUACIÓN OFICIAL (ESA)</h2>
+                    <p class="text-gray-400 text-sm mt-1">Evaluación del Proyecto Final "Soporte Vital Ares I"</p>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="bg-black/50 border border-gray-600 px-6 py-2 rounded-lg text-center">
+                        <span class="text-xs text-gray-400 font-mono block">NOTA FINAL</span>
+                        <span id="rubric-total" class="text-3xl font-bold text-gray-500">0.00</span><span class="text-lg text-gray-500"> /10</span>
+                    </div>
+                    <button onclick="closeRubric()" class="text-gray-400 hover:text-red-500 text-3xl transition-colors">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Body (Table) -->
+            <div class="p-6 overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="font-mono text-sm text-gray-300 bg-space-900">
+                            <th class="p-4 border border-gray-700 w-1/5">CRITERIO / PESO</th>
+                            <th class="p-4 border border-gray-700 text-green-400 text-center w-1/5">EXCELENTE (100%)</th>
+                            <th class="p-4 border border-gray-700 text-blue-400 text-center w-1/5">BUENO (75%)</th>
+                            <th class="p-4 border border-gray-700 text-yellow-400 text-center w-1/5">SUFICIENTE (50%)</th>
+                            <th class="p-4 border border-gray-700 text-red-400 text-center w-1/5">INSUFICIENTE (25%)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <!-- Crit 1 -->
+                        <tr class="border-b border-gray-700 hover:bg-space-900/30">
+                            <td class="p-4 border-r border-gray-700 bg-space-900/50">
+                                <span class="font-bold text-white block mb-1">Rigor Termodinámico</span>
+                                <span class="text-xs text-mars-300 font-mono">3 PUNTOS (30%)</span>
+                                <p class="text-xs text-gray-400 mt-2">Aplicación correcta de las Leyes de los Gases a nivel corpuscular.</p>
+                            </td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c1', 3, this)">Aplica perfectamente Boyle, Charles y Gay-Lussac. Justifica los cálculos usando el modelo de partículas de manera impecable.</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c1', 2.25, this)">Aplica las leyes correctamente, pero la justificación a nivel de partículas (corpuscular) tiene pequeñas imprecisiones.</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c1', 1.5, this)">Menciona las leyes pero comete errores en su aplicación o no justifica a nivel microscópico/corpuscular.</td>
+                            <td class="p-4 score-cell" onclick="updateRubric('c1', 0.75, this)">No aplica las leyes de los gases o demuestra concepciones erróneas graves sobre la presión y la temperatura.</td>
+                        </tr>
+                        <!-- Crit 2 -->
+                        <tr class="border-b border-gray-700 hover:bg-space-900/30">
+                            <td class="p-4 border-r border-gray-700 bg-space-900/50">
+                                <span class="font-bold text-white block mb-1">Resolución del Problema</span>
+                                <span class="text-xs text-mars-300 font-mono">2 PUNTOS (20%)</span>
+                                <p class="text-xs text-gray-400 mt-2">Viabilidad del diseño del soporte vital.</p>
+                            </td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c2', 2, this)">Los cálculos de presurización son exactos. El diseño es lógico, viable y garantiza la supervivencia en el hábitat.</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c2', 1.5, this)">El diseño es viable, pero hay fallos menores en los cálculos o en la consideración de las temperaturas extremas.</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c2', 1, this)">El diseño tiene fallos graves que pondrían en riesgo a la tripulación. Cálculos incompletos.</td>
+                            <td class="p-4 score-cell" onclick="updateRubric('c2', 0.5, this)">No resuelven el problema planteado. La solución no tiene base científica o es pura ciencia ficción.</td>
+                        </tr>
+                        <!-- Crit 3 -->
+                        <tr class="border-b border-gray-700 hover:bg-space-900/30">
+                            <td class="p-4 border-r border-gray-700 bg-space-900/50">
+                                <span class="font-bold text-white block mb-1">Formato y Creatividad (DUA)</span>
+                                <span class="text-xs text-mars-300 font-mono">2 PUNTOS (20%)</span>
+                                <p class="text-xs text-gray-400 mt-2">Aprovechamiento del canal de expresión elegido.</p>
+                            </td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c3', 2, this)">Aprovechan al máximo el formato (maqueta, vídeo, etc.). El diseño visual es espectacular, original y apoya la explicación.</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c3', 1.5, this)">El formato es correcto y está cuidado, pero carece de elementos que destaquen o faciliten la comprensión visual.</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c3', 1, this)">Formato descuidado. La maqueta, póster o vídeo parece hecho a última hora y no ayuda a entender el proyecto.</td>
+                            <td class="p-4 score-cell" onclick="updateRubric('c3', 0.5, this)">No se ajustan a ninguno de los formatos o el producto final es incomprensible/ilegible.</td>
+                        </tr>
+                        <!-- Crit 4 -->
+                        <tr class="border-b border-gray-700 hover:bg-space-900/30">
+                            <td class="p-4 border-r border-gray-700 bg-space-900/50">
+                                <span class="font-bold text-white block mb-1">Habilidades de Comunicación</span>
+                                <span class="text-xs text-mars-300 font-mono">2 PUNTOS (20%)</span>
+                                <p class="text-xs text-gray-400 mt-2">Claridad, argot técnico y persuasión en el Pitch.</p>
+                            </td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c4', 2, this)">Exposición persuasiva, clara y con excelente uso de vocabulario técnico. Mantienen la atención y cumplen el tiempo (5 min).</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c4', 1.5, this)">Buena exposición, pero leen demasiado, el vocabulario técnico es escaso o se exceden un poco del tiempo estipulado.</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c4', 1, this)">Tono de voz monótono, no hay contacto visual con el "comité de la ESA", dudan mucho al explicar.</td>
+                            <td class="p-4 score-cell" onclick="updateRubric('c4', 0.5, this)">Exposición incomprensible, desorganizada, sin preparación previa. Exceso o defecto grave de tiempo.</td>
+                        </tr>
+                        <!-- Crit 5 -->
+                        <tr class="border-b border-gray-700 hover:bg-space-900/30">
+                            <td class="p-4 border-r border-gray-700 bg-space-900/50">
+                                <span class="font-bold text-white block mb-1">Sinergia de Tripulación</span>
+                                <span class="text-xs text-mars-300 font-mono">1 PUNTO (10%)</span>
+                                <p class="text-xs text-gray-400 mt-2">Coevaluación y trabajo en equipo.</p>
+                            </td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c5', 1, this)">Participación equitativa absoluta. Todos dominan el proyecto y asumen sus roles asignados a la perfección.</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c5', 0.75, this)">Trabajan bien en equipo, pero 1 o 2 miembros asumen la mayor parte de la carga explicativa.</td>
+                            <td class="p-4 border-r border-gray-700 score-cell" onclick="updateRubric('c5', 0.5, this)">Desconexión evidente. Algunos miembros de la tripulación no saben explicar su parte del proyecto.</td>
+                            <td class="p-4 score-cell" onclick="updateRubric('c5', 0.25, this)">Conflictos evidentes en el grupo o el trabajo ha sido realizado en su totalidad por un único alumno.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="bg-space-900 border-t border-gray-700 p-4 text-center">
+                <button onclick="resetRubric()" class="text-sm font-mono text-gray-400 hover:text-white border border-gray-600 px-4 py-2 rounded transition-colors">
+                    <i class="fa-solid fa-rotate-right mr-2"></i> REINICIAR EVALUACIÓN
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- ==================== MODO TERMINAL DOCENTE ==================== -->
@@ -1088,6 +1219,60 @@
         // === LÓGICA MODO TERMINAL DOCENTE ===
         let currentSlide = 1;
         const totalSlides = 10; // Actualizado a 10 diapositivas
+
+        // === LÓGICA DE LA RÚBRICA INTERACTIVA ===
+        let rubricScores = { c1: 0, c2: 0, c3: 0, c4: 0, c5: 0 };
+
+        function openRubric() {
+            document.getElementById('rubric-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+        }
+
+        function closeRubric() {
+            document.getElementById('rubric-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateRubric(criterion, value, element) {
+            // Guardar el valor
+            rubricScores[criterion] = value;
+
+            // Lógica visual: desmarcar hermanos y marcar el clickado
+            let row = element.closest('tr');
+            row.querySelectorAll('td.score-cell').forEach(td => {
+                td.classList.remove('bg-green-900/60', 'border-green-500', 'border-4', 'scale-[1.02]', 'shadow-lg');
+                td.classList.add('border-gray-700', 'border-r'); // Restaurar bordes normales
+            });
+            
+            element.classList.remove('border-gray-700');
+            element.classList.add('bg-green-900/60', 'border-green-500', 'border-4', 'scale-[1.02]', 'shadow-lg', 'relative', 'z-10');
+
+            // Calcular total
+            let total = Object.values(rubricScores).reduce((a, b) => a + b, 0);
+            
+            // Actualizar interfaz del total con colores según nota
+            let totalElement = document.getElementById('rubric-total');
+            totalElement.innerText = total.toFixed(2);
+            
+            totalElement.classList.remove('text-gray-500', 'text-red-500', 'text-yellow-500', 'text-green-500', 'text-blue-500');
+            
+            if (total === 0) totalElement.classList.add('text-gray-500');
+            else if (total < 5) totalElement.classList.add('text-red-500'); // Suspenso
+            else if (total < 7) totalElement.classList.add('text-yellow-500'); // Bien
+            else if (total < 9) totalElement.classList.add('text-blue-500'); // Notable
+            else totalElement.classList.add('text-green-500'); // Sobresaliente
+        }
+
+        function resetRubric() {
+            rubricScores = { c1: 0, c2: 0, c3: 0, c4: 0, c5: 0 };
+            document.getElementById('rubric-total').innerText = '0.00';
+            document.getElementById('rubric-total').className = 'text-3xl font-bold text-gray-500';
+            
+            document.querySelectorAll('.score-cell').forEach(td => {
+                td.classList.remove('bg-green-900/60', 'border-green-500', 'border-4', 'scale-[1.02]', 'shadow-lg', 'relative', 'z-10');
+                td.classList.add('border-gray-700');
+            });
+        }
 
         function toggleTerminal() {
             const terminal = document.getElementById('teacher-terminal');
