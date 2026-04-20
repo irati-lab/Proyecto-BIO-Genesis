@@ -735,36 +735,45 @@
                             Un tanque de titanio (volumen fijo) se queda al sol y se calienta. ¿Qué gráfica representa correctamente la relación entre su Temperatura (T) y su Presión (P)?
                         </h2>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-sans">
-                            <!-- OPCIÓN CORRECTA A -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 font-sans">
+                            <!-- OPCIÓN CORRECTA A (GRÁFICA VECTORIAL SVG) -->
                             <div class="p-6 bg-space-900 border-2 border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex flex-col items-center" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
                                 <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mb-4 group-hover:bg-red-600">A</span>
                                 <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative">
-                                    <div class="absolute bottom-0 left-0 w-full h-full" style="background: linear-gradient(to top right, transparent 49%, #ef4444 50%, transparent 51%);"></div>
+                                    <!-- SVG Línea Ascendente -->
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                        <path d="M 0,100 L 100,0" fill="none" stroke="#ef4444" stroke-width="4" />
+                                    </svg>
                                     <span class="absolute -bottom-6 right-0 text-sm text-gray-400">Temp (T)</span>
-                                    <span class="absolute -left-6 top-0 text-sm text-gray-400 -rotate-90 origin-right">Presión</span>
+                                    <span class="absolute -left-8 top-1/2 -translate-y-1/2 text-sm text-gray-400 -rotate-90">Presión</span>
                                 </div>
-                                <p class="mt-8 text-sm text-gray-300 text-center">Línea recta ascendente (Directamente proporcional)</p>
+                                <p class="mt-8 text-sm text-gray-300 text-center">Línea recta ascendente<br>(Directamente proporcional)</p>
                             </div>
                             
                             <div class="p-6 bg-space-900 border-2 border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex flex-col items-center">
                                 <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mb-4 group-hover:bg-red-600">B</span>
                                 <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative">
-                                    <div class="absolute top-0 left-0 w-full h-full rounded-bl-[100%] border-l-2 border-b-2 border-red-500" style="border-radius: 0 0 0 100%;"></div>
+                                    <!-- SVG Curva Descendente -->
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                        <path d="M 0,0 Q 20,90 100,100" fill="none" stroke="#ef4444" stroke-width="4" />
+                                    </svg>
                                     <span class="absolute -bottom-6 right-0 text-sm text-gray-400">Temp (T)</span>
-                                    <span class="absolute -left-6 top-0 text-sm text-gray-400 -rotate-90 origin-right">Presión</span>
+                                    <span class="absolute -left-8 top-1/2 -translate-y-1/2 text-sm text-gray-400 -rotate-90">Presión</span>
                                 </div>
-                                <p class="mt-8 text-sm text-gray-300 text-center">Curva descendente (Inversamente proporcional)</p>
+                                <p class="mt-8 text-sm text-gray-300 text-center">Curva descendente<br>(Inversamente proporcional)</p>
                             </div>
                             
                             <div class="p-6 bg-space-900 border-2 border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex flex-col items-center">
                                 <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mb-4 group-hover:bg-red-600">C</span>
-                                <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative flex items-center">
-                                    <div class="w-full h-0.5 bg-red-500"></div>
+                                <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative">
+                                    <!-- SVG Línea Horizontal -->
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                        <path d="M 0,50 L 100,50" fill="none" stroke="#ef4444" stroke-width="4" />
+                                    </svg>
                                     <span class="absolute -bottom-6 right-0 text-sm text-gray-400">Temp (T)</span>
-                                    <span class="absolute -left-6 top-0 text-sm text-gray-400 -rotate-90 origin-right">Presión</span>
+                                    <span class="absolute -left-8 top-1/2 -translate-y-1/2 text-sm text-gray-400 -rotate-90">Presión</span>
                                 </div>
-                                <p class="mt-8 text-sm text-gray-300 text-center">Línea horizontal (Presión constante)</p>
+                                <p class="mt-8 text-sm text-gray-300 text-center">Línea horizontal<br>(Presión constante)</p>
                             </div>
                         </div>
                     </div>
@@ -803,6 +812,190 @@
                     </div>
                 </div>
 
+                <!-- Diapositiva 6: TEORÍA CINÉTICA (Respuesta C) -->
+                <div id="slide-6" class="terminal-slide">
+                    <div class="bg-space-800 border-2 border-mars-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(193,68,14,0.3)]">
+                        <div class="flex justify-between mb-6">
+                            <span class="text-mars-400 font-mono text-sm border border-mars-500/50 px-2 py-1 rounded">CONCEPT TEST 5</span>
+                            <span class="text-gray-400 font-mono text-sm">Tema: Teoría Cinético-Molecular</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8 leading-tight">
+                            En un módulo rígido del Hábitat, la calefacción se descontrola y la temperatura se duplica (en Kelvin). La presión también se duplica. ¿Qué está pasando EXÁCTAMENTE con las partículas?
+                        </h2>
+                        
+                        <div class="space-y-4 font-sans text-lg">
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-mars-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-mars-600">A</span>
+                                <span class="text-gray-300 group-hover:text-white">Las partículas se expanden con el calor y ocupan el doble de espacio.</span>
+                            </div>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-mars-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-mars-600">B</span>
+                                <span class="text-gray-300 group-hover:text-white">Las partículas se dividen en dos, duplicando la cantidad de gas.</span>
+                            </div>
+                            <!-- OPCIÓN CORRECTA C -->
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-mars-400 transition-colors cursor-pointer group flex items-start" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
+                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-mars-600">C</span>
+                                <span class="text-gray-300 group-hover:text-white">Las partículas se mueven más deprisa, por lo que chocan más veces y con el doble de fuerza contra las paredes.</span>
+                            </div>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-mars-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-mars-600">D</span>
+                                <span class="text-gray-300 group-hover:text-white">El calor se acumula en las paredes del hábitat, atrayendo magnéticamente a las partículas.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 7: MATEMÁTICAS / PROPORCIONALIDAD (Respuesta C) -->
+                <div id="slide-7" class="terminal-slide">
+                    <div class="bg-space-800 border-2 border-indigo-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(99,102,241,0.3)]">
+                        <div class="flex justify-between mb-6">
+                            <span class="text-indigo-400 font-mono text-sm border border-indigo-500/50 px-2 py-1 rounded">CONCEPT TEST 6</span>
+                            <span class="text-gray-400 font-mono text-sm">Tema: Razonamiento Matemático (General)</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8 leading-tight">
+                            Un sistema automático de la ESA triplica la Presión de una muestra de gas y, simultáneamente, reduce su Volumen a la tercera parte. ¿Qué le ocurre a su Temperatura?
+                        </h2>
+                        
+                        <div class="space-y-4 font-sans text-lg">
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-indigo-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-indigo-600">A</span>
+                                <span class="text-gray-300 group-hover:text-white">Se triplica.</span>
+                            </div>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-indigo-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-indigo-600">B</span>
+                                <span class="text-gray-300 group-hover:text-white">Se reduce a la tercera parte.</span>
+                            </div>
+                            <!-- OPCIÓN CORRECTA C -->
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-indigo-400 transition-colors cursor-pointer group flex items-start" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
+                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-indigo-600">C</span>
+                                <span class="text-gray-300 group-hover:text-white">Se mantiene exactamente igual.</span>
+                            </div>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-indigo-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-indigo-600">D</span>
+                                <span class="text-gray-300 group-hover:text-white">Se multiplica por nueve (9x).</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 8: GRÁFICA DE BOYLE (Respuesta B) -->
+                <div id="slide-8" class="terminal-slide">
+                    <div class="bg-space-800 border-2 border-blue-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                        <div class="flex justify-between mb-6">
+                            <span class="text-blue-400 font-mono text-sm border border-blue-500/50 px-2 py-1 rounded">CONCEPT TEST 7</span>
+                            <span class="text-gray-400 font-mono text-sm">Tema: Ley de Boyle (Identidad visual)</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8 leading-tight">
+                            Estamos calibrando los trajes de la tripulación. Según la Ley de Boyle (Temperatura constante), ¿cuál es la gráfica correcta si representamos Presión frente a Volumen?
+                        </h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 font-sans">
+                            <div class="p-6 bg-space-900 border-2 border-gray-600 rounded hover:border-blue-400 transition-colors cursor-pointer group flex flex-col items-center">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mb-4 group-hover:bg-blue-600">A</span>
+                                <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                        <path d="M 0,100 L 100,0" fill="none" stroke="#3b82f6" stroke-width="4" />
+                                    </svg>
+                                    <span class="absolute -bottom-6 right-0 text-sm text-gray-400">Volumen (V)</span>
+                                    <span class="absolute -left-8 top-1/2 -translate-y-1/2 text-sm text-gray-400 -rotate-90">Presión</span>
+                                </div>
+                                <p class="mt-8 text-sm text-gray-300 text-center">Línea recta ascendente</p>
+                            </div>
+                            
+                            <!-- OPCIÓN CORRECTA B -->
+                            <div class="p-6 bg-space-900 border-2 border-gray-600 rounded hover:border-blue-400 transition-colors cursor-pointer group flex flex-col items-center" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
+                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mb-4 group-hover:bg-blue-600">B</span>
+                                <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                        <path d="M 0,0 Q 20,90 100,100" fill="none" stroke="#3b82f6" stroke-width="4" />
+                                    </svg>
+                                    <span class="absolute -bottom-6 right-0 text-sm text-gray-400">Volumen (V)</span>
+                                    <span class="absolute -left-8 top-1/2 -translate-y-1/2 text-sm text-gray-400 -rotate-90">Presión</span>
+                                </div>
+                                <p class="mt-8 text-sm text-gray-300 text-center">Curva descendente (Hipérbola)</p>
+                            </div>
+                            
+                            <div class="p-6 bg-space-900 border-2 border-gray-600 rounded hover:border-blue-400 transition-colors cursor-pointer group flex flex-col items-center">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mb-4 group-hover:bg-blue-600">C</span>
+                                <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                        <path d="M 0,50 L 100,50" fill="none" stroke="#3b82f6" stroke-width="4" />
+                                    </svg>
+                                    <span class="absolute -bottom-6 right-0 text-sm text-gray-400">Volumen (V)</span>
+                                    <span class="absolute -left-8 top-1/2 -translate-y-1/2 text-sm text-gray-400 -rotate-90">Presión</span>
+                                </div>
+                                <p class="mt-8 text-sm text-gray-300 text-center">Línea recta horizontal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 9: LÍMITE TEÓRICO CHARLES (Respuesta A) -->
+                <div id="slide-9" class="terminal-slide">
+                    <div class="bg-space-800 border-2 border-yellow-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(234,179,8,0.3)]">
+                        <div class="flex justify-between mb-6">
+                            <span class="text-yellow-400 font-mono text-sm border border-yellow-500/50 px-2 py-1 rounded">CONCEPT TEST 8</span>
+                            <span class="text-gray-400 font-mono text-sm">Tema: Límite de Charles (0 Kelvin)</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8 leading-tight">
+                            Metemos un globo lleno de aire en un super-congelador marciano y lo enfriamos exactamente hasta el Cero Absoluto (0 Kelvin). Teóricamente, y según la Ley de Charles, ¿qué le ocurriría al volumen del globo?
+                        </h2>
+                        
+                        <div class="space-y-4 font-sans text-lg">
+                            <!-- OPCIÓN CORRECTA A -->
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-yellow-400 transition-colors cursor-pointer group flex items-start" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
+                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-yellow-600">A</span>
+                                <span class="text-gray-300 group-hover:text-white">El volumen tendería a cero (el globo colapsaría por completo al no haber movimiento de partículas).</span>
+                            </div>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-yellow-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-yellow-600">B</span>
+                                <span class="text-gray-300 group-hover:text-white">El volumen se mantendría igual, pero el gas se congelaría volviéndose rígido.</span>
+                            </div>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-yellow-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-yellow-600">C</span>
+                                <span class="text-gray-300 group-hover:text-white">El globo explotaría porque los materiales se contraen con el frío rompiendo la goma.</span>
+                            </div>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-yellow-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-yellow-600">D</span>
+                                <span class="text-gray-300 group-hover:text-white">El volumen aumentaría hasta el infinito por falta de resistencia molecular.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 10: EL ESCENARIO REAL (Respuesta B) -->
+                <div id="slide-10" class="terminal-slide">
+                    <div class="bg-space-800 border-2 border-green-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(34,197,94,0.3)]">
+                        <div class="flex justify-between mb-6">
+                            <span class="text-green-400 font-mono text-sm border border-green-500/50 px-2 py-1 rounded">CONCEPT TEST 9 (RETO FINAL)</span>
+                            <span class="text-gray-400 font-mono text-sm">Tema: Aplicación al Hábitat</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8 leading-tight">
+                            El Hábitat Ares I tiene una pequeña fuga no detectada. Sus sensores térmicos están perfectos (Temperatura Constante) y sus paredes son de metal titanio (Volumen Constante). Sin embargo, el manómetro indica que la Presión está bajando. ¿Por qué ocurre esto si T y V no cambian?
+                        </h2>
+                        
+                        <div class="space-y-4 font-sans text-lg">
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-green-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-green-600">A</span>
+                                <span class="text-gray-300 group-hover:text-white">El frío extremo de Marte está logrando atravesar el metal y contrayendo el gas desde dentro.</span>
+                            </div>
+                            <!-- OPCIÓN CORRECTA B -->
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-green-400 transition-colors cursor-pointer group flex items-start" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
+                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-green-600">B</span>
+                                <span class="text-gray-300 group-hover:text-white">La fuga está expulsando partículas al exterior. Al haber menos partículas dentro, hay menos choques contra las paredes.</span>
+                            </div>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-green-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-green-600">C</span>
+                                <span class="text-gray-300 group-hover:text-white">El metal del hábitat se está expandiendo de forma microscópica, aumentando el volumen total.</span>
+                            </div>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-green-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-green-600">D</span>
+                                <span class="text-gray-300 group-hover:text-white">La leve presión atmosférica de Marte (600 Pa) está empujando hacia adentro los sensores estropeándolos.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Controles Inferiores -->
@@ -811,7 +1004,7 @@
                     <i class="fa-solid fa-arrow-left"></i> ANTERIOR
                 </button>
                 <div class="font-mono text-gray-400 bg-space-800 px-4 py-2 rounded-full border border-gray-700">
-                    DIAPOSITIVA <span id="current-slide" class="text-white font-bold">1</span> DE 5
+                    DIAPOSITIVA <span id="current-slide" class="text-white font-bold">1</span> DE 10
                 </div>
                 <button onclick="nextSlide()" class="text-gray-400 hover:text-white flex items-center gap-2 font-mono bg-space-800 px-6 py-3 rounded border border-gray-700 transition-colors hover:bg-space-700">
                     SIGUIENTE <i class="fa-solid fa-arrow-right"></i>
@@ -894,7 +1087,7 @@
 
         // === LÓGICA MODO TERMINAL DOCENTE ===
         let currentSlide = 1;
-        const totalSlides = 5; // Actualizado a 5 diapositivas
+        const totalSlides = 10; // Actualizado a 10 diapositivas
 
         function toggleTerminal() {
             const terminal = document.getElementById('teacher-terminal');
