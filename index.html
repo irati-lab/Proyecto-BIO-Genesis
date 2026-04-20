@@ -196,10 +196,11 @@
                     </div>
                 </div>
                 
-                <!-- BOTÓN MODO DOCENTE -->
+                <!-- BOTÓN MODO DOCENTE (AHORA MUCHO MÁS VISIBLE) -->
                 <div>
-                    <button onclick="toggleTerminal()" class="text-gray-500 hover:text-blue-400 p-2 transition-colors border border-transparent hover:border-blue-400/50 rounded" title="Acceso Docente">
-                        <i class="fa-solid fa-user-shield"></i>
+                    <button onclick="toggleTerminal()" class="bg-red-900/40 text-red-400 border-2 border-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded font-mono text-xs sm:text-sm transition-all shadow-[0_0_10px_rgba(220,38,38,0.5)] flex items-center gap-2 group" title="Abrir Modo Aula">
+                        <i class="fa-solid fa-user-shield group-hover:scale-110 transition-transform"></i> 
+                        <span class="hidden sm:inline font-bold">[ ZONA DOCENTE ]</span>
                     </button>
                 </div>
 
@@ -234,7 +235,6 @@
                     <div class="absolute -top-6 -right-6 bg-red-600 text-white font-mono font-bold px-4 py-2 rounded-full shadow-lg transform rotate-12 flex items-center gap-2">
                         <i class="fa-solid fa-hand-pointer"></i> ¡PASO 1!
                     </div>
-                    <!-- Imagen test aptitud -->
                     <img src="./martesuperficie.png" alt="Superficie marciana - Acceso al test" class="w-full h-auto border-2 border-gray-300" onerror="this.src='https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&q=80&w=400';">
                     <div class="mt-3 bg-red-100 text-red-800 p-2 border-2 border-red-800 font-bold">
                         [ CLICK AQUÍ PARA REALIZAR EL TEST DE APTITUD ]
@@ -609,117 +609,195 @@
         </main>
     </div>
 
-    <!-- ==================== MODO TERMINAL DOCENTE (Oculto por defecto) ==================== -->
+    <!-- ==================== MODO TERMINAL DOCENTE ==================== -->
     <div id="teacher-terminal" class="hidden min-h-screen bg-space-900 z-50 fixed inset-0 overflow-y-auto pb-20 pt-10">
         <div class="max-w-5xl mx-auto px-4 relative h-full flex flex-col">
             
             <!-- Barra superior Terminal -->
-            <div class="flex justify-between items-center border-b border-blue-500/30 pb-4 mb-8">
-                <div class="font-mono text-blue-400">
-                    <i class="fa-solid fa-terminal mr-2"></i> TERMINAL DOCENTE // PEER INSTRUCTION
+            <div class="flex justify-between items-center border-b border-mars-500/50 pb-4 mb-8">
+                <div class="font-mono text-mars-300 text-lg">
+                    <i class="fa-solid fa-terminal mr-2"></i> TERMINAL DOCENTE // MODO AULA
                 </div>
-                <button onclick="toggleTerminal()" class="bg-red-900/50 hover:bg-red-600 text-red-200 hover:text-white border border-red-500/50 px-4 py-1 rounded font-mono text-sm transition-colors">
-                    <i class="fa-solid fa-times mr-2"></i> SALIR
+                <button onclick="toggleTerminal()" class="bg-red-900/50 hover:bg-red-600 text-red-200 hover:text-white border border-red-500/50 px-4 py-2 rounded font-mono transition-colors shadow-lg shadow-red-500/20">
+                    <i class="fa-solid fa-times mr-2"></i> CERRAR TERMINAL
                 </button>
             </div>
 
-            <!-- Diapositivas (ConceptTests) -->
+            <!-- Diapositivas (ConceptTests y Teoría) -->
             <div class="flex-grow flex flex-col justify-center relative">
                 
-                <!-- Diapositiva 1 -->
+                <!-- Diapositiva 1: TEORÍA -->
                 <div id="slide-1" class="terminal-slide active">
+                    <div class="bg-space-800 border-2 border-mars-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(193,68,14,0.3)]">
+                        <div class="flex justify-between mb-6 border-b border-mars-500/30 pb-4">
+                            <span class="text-mars-400 font-mono font-bold text-xl"><i class="fa-solid fa-book-open mr-2"></i> REPASO DE PROTOCOLOS</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8">Las 3 Leyes Fundamentales del Soporte Vital</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
+                            <!-- Boyle -->
+                            <div class="bg-blue-900/30 border border-blue-500 p-6 rounded text-center">
+                                <h3 class="text-blue-400 font-bold text-xl mb-2">BOYLE</h3>
+                                <p class="text-gray-300 mb-4 italic">"A Temperatura constante"</p>
+                                <div class="text-white text-lg">
+                                    Si <i class="fa-solid fa-arrow-down text-blue-400"></i> Volumen <br>
+                                    <i class="fa-solid fa-arrow-up text-red-400 mt-2"></i> Presión
+                                </div>
+                            </div>
+                            <!-- Charles -->
+                            <div class="bg-yellow-900/30 border border-yellow-500 p-6 rounded text-center">
+                                <h3 class="text-yellow-400 font-bold text-xl mb-2">CHARLES</h3>
+                                <p class="text-gray-300 mb-4 italic">"A Presión constante"</p>
+                                <div class="text-white text-lg">
+                                    Si <i class="fa-solid fa-arrow-up text-red-400"></i> Temperatura <br>
+                                    <i class="fa-solid fa-arrow-up text-red-400 mt-2"></i> Volumen
+                                </div>
+                            </div>
+                            <!-- Gay-Lussac -->
+                            <div class="bg-red-900/30 border border-red-500 p-6 rounded text-center">
+                                <h3 class="text-red-400 font-bold text-xl mb-2">GAY-LUSSAC</h3>
+                                <p class="text-gray-300 mb-4 italic">"A Volumen constante"</p>
+                                <div class="text-white text-lg">
+                                    Si <i class="fa-solid fa-arrow-up text-red-400"></i> Temperatura <br>
+                                    <i class="fa-solid fa-arrow-up text-red-400 mt-2"></i> Presión
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 2: BOYLE (Opción Múltiple - Respuesta C) -->
+                <div id="slide-2" class="terminal-slide">
                     <div class="bg-space-800 border-2 border-blue-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(59,130,246,0.3)]">
                         <div class="flex justify-between mb-6">
                             <span class="text-blue-400 font-mono text-sm border border-blue-500/50 px-2 py-1 rounded">CONCEPT TEST 1</span>
                             <span class="text-gray-400 font-mono text-sm">Tema: Ley de Boyle</span>
                         </div>
                         <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8 leading-tight">
-                            Un cadete revisa un fuelle sellado de un traje espacial. Si empuja el émbolo reduciendo el volumen a la mitad a temperatura constante, la presión se duplica. ¿Cuál es la razón a nivel corpuscular?
+                            Un cadete presuriza una jeringuilla sellada reduciendo el volumen a la mitad (a temperatura constante). Observa que la presión se duplica. ¿Cuál es la razón a nivel corpuscular?
                         </h2>
                         
                         <div class="space-y-4 font-sans text-lg">
                             <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-blue-400 transition-colors cursor-pointer group flex items-start">
                                 <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-blue-600">A</span>
-                                <span class="text-gray-300 group-hover:text-white">Las partículas de gas se han comprimido y ahora son más pequeñas, por lo que rebotan más rápido.</span>
-                            </div>
-                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-blue-400 transition-colors cursor-pointer group flex items-start" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
-                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0">B</span>
-                                <span class="text-gray-300">Hay la misma cantidad de partículas y se mueven a la misma velocidad, pero al tener menos espacio, chocan el doble de veces contra las paredes.</span>
+                                <span class="text-gray-300 group-hover:text-white">Las partículas de gas se han comprimido y ahora son más pequeñas.</span>
                             </div>
                             <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-blue-400 transition-colors cursor-pointer group flex items-start">
-                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-blue-600">C</span>
-                                <span class="text-gray-300 group-hover:text-white">Las partículas se mueven más rápido porque el roce de comprimir el émbolo ha generado calor adicional.</span>
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-blue-600">B</span>
+                                <span class="text-gray-300 group-hover:text-white">Se duplica el número de partículas en el interior.</span>
+                            </div>
+                            <!-- OPCIÓN CORRECTA C -->
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-blue-400 transition-colors cursor-pointer group flex items-start" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
+                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-blue-600">C</span>
+                                <span class="text-gray-300 group-hover:text-white">Las partículas tienen menos espacio y chocan el doble de veces contra las paredes.</span>
                             </div>
                             <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-blue-400 transition-colors cursor-pointer group flex items-start">
                                 <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-blue-600">D</span>
-                                <span class="text-gray-300 group-hover:text-white">El número de partículas se duplica para compensar la falta de espacio.</span>
+                                <span class="text-gray-300 group-hover:text-white">El roce de comprimir la jeringuilla genera calor y las acelera.</span>
                             </div>
-                        </div>
-                        <div class="mt-8 text-center text-gray-500 font-mono text-sm hidden-instruction">
-                            [ Haz clic en la opción correcta (B) para revelarla ]
                         </div>
                     </div>
                 </div>
 
-                <!-- Diapositiva 2 -->
-                <div id="slide-2" class="terminal-slide">
+                <!-- Diapositiva 3: CHARLES (Verdadero/Falso - Respuesta Falso) -->
+                <div id="slide-3" class="terminal-slide">
                     <div class="bg-space-800 border-2 border-yellow-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(234,179,8,0.3)]">
                         <div class="flex justify-between mb-6">
                             <span class="text-yellow-400 font-mono text-sm border border-yellow-500/50 px-2 py-1 rounded">CONCEPT TEST 2</span>
                             <span class="text-gray-400 font-mono text-sm">Tema: Ley de Charles</span>
                         </div>
                         <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8 leading-tight">
-                            Inflamos un globo en el exterior marciano (-70ºC) a 2 Litros. Lo metemos en la esclusa y lo calentamos a +20ºC, manteniendo la presión de 1 atm constante. ¿Qué observamos y por qué?
+                            AFIRMACIÓN DEL INGENIERO: <br><span class="text-yellow-400 font-normal italic">"Si inflamos un globo en el exterior marciano (-70ºC) y lo metemos en la esclusa calentándolo a +20ºC, el globo se encogerá porque el calor consume el gas interno."</span>
                         </h2>
                         
-                        <div class="space-y-4 font-sans text-lg">
-                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-yellow-400 transition-colors cursor-pointer group flex items-start">
-                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-yellow-600">A</span>
-                                <span class="text-gray-300 group-hover:text-white">El globo se hincha porque el calor hace que las partículas de gas engorden.</span>
+                        <div class="grid grid-cols-2 gap-8 font-sans text-2xl mt-12">
+                            <div class="p-8 bg-space-900 border-2 border-gray-600 rounded-xl hover:border-red-500 transition-colors cursor-pointer group text-center">
+                                <i class="fa-solid fa-check text-4xl mb-4 text-gray-500 group-hover:text-red-500"></i><br>
+                                <span class="text-gray-300 group-hover:text-white font-bold">VERDADERO</span>
                             </div>
-                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-yellow-400 transition-colors cursor-pointer group flex items-start" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
-                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0">B</span>
-                                <span class="text-gray-300">El globo se hincha porque las partículas se mueven más rápido y empujan la goma hacia afuera para mantener la presión estable.</span>
-                            </div>
-                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-yellow-400 transition-colors cursor-pointer group flex items-start">
-                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-yellow-600">C</span>
-                                <span class="text-gray-300 group-hover:text-white">El globo se encoge porque el calor consume el gas del interior.</span>
-                            </div>
-                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-yellow-400 transition-colors cursor-pointer group flex items-start">
-                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-yellow-600">D</span>
-                                <span class="text-gray-300 group-hover:text-white">El globo se queda igual porque la presión exterior de 1 atm no ha cambiado.</span>
+                            <!-- OPCIÓN CORRECTA FALSO -->
+                            <div class="p-8 bg-space-900 border-2 border-gray-600 rounded-xl hover:border-green-500 transition-colors cursor-pointer group text-center" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('i').classList.replace('text-gray-500', 'text-green-500')">
+                                <i class="fa-solid fa-times text-4xl mb-4 text-gray-500 group-hover:text-green-500"></i><br>
+                                <span class="text-gray-300 group-hover:text-white font-bold">FALSO</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Diapositiva 3 -->
-                <div id="slide-3" class="terminal-slide">
+                <!-- Diapositiva 4: GAY-LUSSAC (Identificación Visual - Respuesta A) -->
+                <div id="slide-4" class="terminal-slide">
                     <div class="bg-space-800 border-2 border-red-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(239,68,68,0.3)]">
                         <div class="flex justify-between mb-6">
                             <span class="text-red-400 font-mono text-sm border border-red-500/50 px-2 py-1 rounded">CONCEPT TEST 3</span>
                             <span class="text-gray-400 font-mono text-sm">Tema: Ley de Gay-Lussac</span>
                         </div>
                         <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8 leading-tight">
-                            Un tanque de titanio (totalmente rígido) se ha quedado bajo el sol marciano. Se calienta rápidamente de -50ºC a +10ºC. ¿Qué alerta debería saltar en el panel?
+                            Un tanque de titanio (volumen fijo) se queda al sol y se calienta. ¿Qué gráfica representa correctamente la relación entre su Temperatura (T) y su Presión (P)?
+                        </h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-sans">
+                            <!-- OPCIÓN CORRECTA A -->
+                            <div class="p-6 bg-space-900 border-2 border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex flex-col items-center" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
+                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mb-4 group-hover:bg-red-600">A</span>
+                                <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative">
+                                    <div class="absolute bottom-0 left-0 w-full h-full" style="background: linear-gradient(to top right, transparent 49%, #ef4444 50%, transparent 51%);"></div>
+                                    <span class="absolute -bottom-6 right-0 text-sm text-gray-400">Temp (T)</span>
+                                    <span class="absolute -left-6 top-0 text-sm text-gray-400 -rotate-90 origin-right">Presión</span>
+                                </div>
+                                <p class="mt-8 text-sm text-gray-300 text-center">Línea recta ascendente (Directamente proporcional)</p>
+                            </div>
+                            
+                            <div class="p-6 bg-space-900 border-2 border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex flex-col items-center">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mb-4 group-hover:bg-red-600">B</span>
+                                <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative">
+                                    <div class="absolute top-0 left-0 w-full h-full rounded-bl-[100%] border-l-2 border-b-2 border-red-500" style="border-radius: 0 0 0 100%;"></div>
+                                    <span class="absolute -bottom-6 right-0 text-sm text-gray-400">Temp (T)</span>
+                                    <span class="absolute -left-6 top-0 text-sm text-gray-400 -rotate-90 origin-right">Presión</span>
+                                </div>
+                                <p class="mt-8 text-sm text-gray-300 text-center">Curva descendente (Inversamente proporcional)</p>
+                            </div>
+                            
+                            <div class="p-6 bg-space-900 border-2 border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex flex-col items-center">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mb-4 group-hover:bg-red-600">C</span>
+                                <div class="w-full h-32 border-l-2 border-b-2 border-gray-400 relative flex items-center">
+                                    <div class="w-full h-0.5 bg-red-500"></div>
+                                    <span class="absolute -bottom-6 right-0 text-sm text-gray-400">Temp (T)</span>
+                                    <span class="absolute -left-6 top-0 text-sm text-gray-400 -rotate-90 origin-right">Presión</span>
+                                </div>
+                                <p class="mt-8 text-sm text-gray-300 text-center">Línea horizontal (Presión constante)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 5: GENERAL (Opción Múltiple - Respuesta D) -->
+                <div id="slide-5" class="terminal-slide">
+                    <div class="bg-space-800 border-2 border-purple-500 p-8 md:p-12 rounded-xl shadow-[0_0_30px_rgba(168,85,247,0.3)]">
+                        <div class="flex justify-between mb-6">
+                            <span class="text-purple-400 font-mono text-sm border border-purple-500/50 px-2 py-1 rounded">CONCEPT TEST 4</span>
+                            <span class="text-gray-400 font-mono text-sm">Tema: Ley General de los Gases</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-sans font-bold text-white mb-8 leading-tight">
+                            Si abrimos un tanque exterior de O₂ (muy frío y a altísima presión) hacia el interior del Hábitat Ares I (más caliente y a baja presión 1 atm), ¿qué le pasará al gas?
                         </h2>
                         
                         <div class="space-y-4 font-sans text-lg">
-                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex items-start">
-                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-red-600">A</span>
-                                <span class="text-gray-300 group-hover:text-white">Alerta de vacío: El gas se condensará por el calor y la presión bajará a cero.</span>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-purple-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-purple-600">A</span>
+                                <span class="text-gray-300 group-hover:text-white">Disminuirá su volumen drásticamente porque hace más calor dentro.</span>
                             </div>
-                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex items-start" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
-                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0">B</span>
-                                <span class="text-gray-300">Alerta de ruptura: Las partículas se mueven más rápido y golpean el titanio con más violencia, aumentando la presión.</span>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-purple-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-purple-600">B</span>
+                                <span class="text-gray-300 group-hover:text-white">Se volverá líquido inmediatamente por el cambio de presión.</span>
                             </div>
-                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex items-start">
-                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-red-600">C</span>
-                                <span class="text-gray-300 group-hover:text-white">Alerta de expansión: El volumen del tanque aumentará para darle espacio al gas caliente.</span>
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-purple-400 transition-colors cursor-pointer group flex items-start">
+                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-purple-600">C</span>
+                                <span class="text-gray-300 group-hover:text-white">Su volumen total no cambiará, solo su temperatura.</span>
                             </div>
-                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-red-400 transition-colors cursor-pointer group flex items-start">
-                                <span class="bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-red-600">D</span>
-                                <span class="text-gray-300 group-hover:text-white">Ninguna alerta: Como el tanque está sellado y es de titanio, no pasa nada en el interior.</span>
+                            <!-- OPCIÓN CORRECTA D -->
+                            <div class="p-4 bg-space-900 border border-gray-600 rounded hover:border-purple-400 transition-colors cursor-pointer group flex items-start" onclick="this.classList.toggle('border-green-500'); this.classList.toggle('bg-green-900/30'); this.querySelector('.letter').classList.toggle('bg-green-600')">
+                                <span class="letter bg-gray-700 text-white font-bold w-8 h-8 flex items-center justify-center rounded mr-4 flex-shrink-0 group-hover:bg-purple-600">D</span>
+                                <span class="text-gray-300 group-hover:text-white">Se expandirá drásticamente ocupando mucho más volumen al bajar la presión y subir la temperatura.</span>
                             </div>
                         </div>
                     </div>
@@ -729,13 +807,13 @@
 
             <!-- Controles Inferiores -->
             <div class="flex justify-between items-center mt-8">
-                <button onclick="prevSlide()" class="text-gray-400 hover:text-white flex items-center gap-2 font-mono bg-space-800 px-4 py-2 rounded border border-gray-700">
+                <button onclick="prevSlide()" class="text-gray-400 hover:text-white flex items-center gap-2 font-mono bg-space-800 px-6 py-3 rounded border border-gray-700 transition-colors hover:bg-space-700">
                     <i class="fa-solid fa-arrow-left"></i> ANTERIOR
                 </button>
-                <div class="font-mono text-gray-500">
-                    <span id="current-slide">1</span> / 3
+                <div class="font-mono text-gray-400 bg-space-800 px-4 py-2 rounded-full border border-gray-700">
+                    DIAPOSITIVA <span id="current-slide" class="text-white font-bold">1</span> DE 5
                 </div>
-                <button onclick="nextSlide()" class="text-gray-400 hover:text-white flex items-center gap-2 font-mono bg-space-800 px-4 py-2 rounded border border-gray-700">
+                <button onclick="nextSlide()" class="text-gray-400 hover:text-white flex items-center gap-2 font-mono bg-space-800 px-6 py-3 rounded border border-gray-700 transition-colors hover:bg-space-700">
                     SIGUIENTE <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
@@ -816,7 +894,7 @@
 
         // === LÓGICA MODO TERMINAL DOCENTE ===
         let currentSlide = 1;
-        const totalSlides = 3;
+        const totalSlides = 5; // Actualizado a 5 diapositivas
 
         function toggleTerminal() {
             const terminal = document.getElementById('teacher-terminal');
