@@ -1254,6 +1254,77 @@
     </div>
 
     <script>
+        // === LÓGICA DE NAVEGACIÓN Y MENÚS ===
+        function navigate(pageId) {
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-mars-300', 'border-mars-500');
+                btn.classList.add('border-transparent');
+                if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(pageId)) {
+                    btn.classList.add('text-mars-300', 'border-mars-500');
+                    btn.classList.remove('border-transparent');
+                }
+            });
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showDuaContent(type, buttonElement) {
+            document.querySelectorAll('.dua-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('dua-' + type).classList.add('active');
+            
+            document.querySelectorAll('.dua-module').forEach(el => {
+                el.style.borderColor = 'rgba(75, 85, 99, 0.5)'; 
+                el.style.transform = 'translateY(0)';
+            });
+            
+            if(type === 'video') buttonElement.style.borderColor = '#3b82f6'; 
+            if(type === 'audio') buttonElement.style.borderColor = '#22c55e'; 
+            if(type === 'texto') buttonElement.style.borderColor = '#eab308'; 
+            if(type === 'esquema') buttonElement.style.borderColor = '#a855f7'; 
+            if(type === 'simulador') buttonElement.style.borderColor = '#14b8a6'; 
+            
+            buttonElement.style.transform = 'translateY(-5px)';
+        }
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if(btn && menu) {
+            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        }
+
+        // === LÓGICA DE GAMIFICACIÓN (SESIÓN 3) ===
+        let emergencyActive = false;
+        function triggerEmergency() {
+            const card = document.getElementById('session3-card');
+            const normalText = document.getElementById('normal-text');
+            const emergencyText = document.getElementById('emergency-text');
+            const emBtn = card.querySelector('button');
+            
+            emergencyActive = !emergencyActive;
+            if(emergencyActive) {
+                document.body.classList.add('emergency-mode');
+                card.querySelector('.bg-space-800').classList.add('border-red-500');
+                card.querySelector('.bg-space-800').classList.remove('border-red-700');
+                normalText.classList.add('hidden');
+                emergencyText.classList.remove('hidden');
+                emBtn.innerHTML = '<i class="fa-solid fa-power-off"></i> SISTEMA RESTAURADO';
+                emBtn.classList.replace('bg-red-600', 'bg-green-600');
+                emBtn.classList.replace('hover:bg-red-700', 'hover:bg-green-700');
+            } else {
+                document.body.classList.remove('emergency-mode');
+                card.querySelector('.bg-space-800').classList.remove('border-red-500');
+                card.querySelector('.bg-space-800').classList.add('border-red-700');
+                normalText.classList.remove('hidden');
+                emergencyText.classList.add('hidden');
+                emBtn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> SIMULAR TORMENTA';
+                emBtn.classList.replace('bg-green-600', 'bg-red-600');
+                emBtn.classList.replace('hover:bg-green-700', 'hover:bg-red-700');
+            }
+        }
+
         // === LÓGICA DE MODALES (DOSSIER Y RÚBRICA) ===
         function openDossier() {
             document.getElementById('dossier-modal').classList.remove('hidden');
@@ -1265,79 +1336,11 @@
             document.body.style.overflow = 'auto';
         }
 
-        function openRubric() {
-            document.getElementById('rubric-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-            });
-            document.getElementById('mobile-menu').classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Lógica para mostrar contenido del Menú DUA y resaltar el botón
-        function showDuaContent(type, buttonElement) {
-            document.querySelectorAll('.dua-content').forEach(el => el.classList.remove('active'));
-            document.getElementById('dua-' + type).classList.add('active');
-            
-            // Reiniciar bordes
-            document.querySelectorAll('.dua-module').forEach(el => {
-                el.style.borderColor = 'rgba(75, 85, 99, 0.5)'; // gris original
-                el.style.transform = 'translateY(0)';
-            });
-            
-            // Aplicar borde de color específico al seleccionado
-            if(type === 'video') buttonElement.style.borderColor = '#3b82f6'; // azul
-            if(type === 'audio') buttonElement.style.borderColor = '#22c55e'; // verde
-            if(type === 'texto') buttonElement.style.borderColor = '#eab308'; // amarillo
-            if(type === 'esquema') buttonElement.style.borderColor = '#a855f7'; // morado
-            if(type === 'simulador') buttonElement.style.borderColor = '#14b8a6'; // teal
-            
-            buttonElement.style.transform = 'translateY(-5px)';
-        }
-
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-
-        let emergencyActive = false;
-        function triggerEmergency() {
-            const card = document.getElementById('session3-card');
-            const normalText = document.getElementById('normal-text');
-            const emergencyText = document.getElementById('emergency-text');
-            const btn = card.querySelector('button');
-            
-            emergencyActive = !emergencyActive;
-            if(emergencyActive) {
-                document.body.classList.add('emergency-mode');
-                card.querySelector('.bg-space-800').classList.add('border-red-500');
-                card.querySelector('.bg-space-800').classList.remove('border-red-700');
-                normalText.classList.add('hidden');
-                emergencyText.classList.remove('hidden');
-                btn.innerHTML = '<i class="fa-solid fa-power-off"></i> SISTEMA RESTAURADO';
-                btn.classList.replace('bg-red-600', 'bg-green-600');
-                btn.classList.replace('hover:bg-red-700', 'hover:bg-green-700');
-            } else {
-                document.body.classList.remove('emergency-mode');
-                card.querySelector('.bg-space-800').classList.remove('border-red-500');
-                card.querySelector('.bg-space-800').classList.add('border-red-700');
-                normalText.classList.remove('hidden');
-                emergencyText.classList.add('hidden');
-                btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> SIMULAR TORMENTA';
-                btn.classList.replace('bg-green-600', 'bg-red-600');
-                btn.classList.replace('hover:bg-green-700', 'hover:bg-red-700');
-            }
-        }
-
-        // === LÓGICA MODO TERMINAL DOCENTE ===
-        let currentSlide = 1;
-        const totalSlides = 10; // Actualizado a 10 diapositivas
-
-        // === LÓGICA DE LA RÚBRICA INTERACTIVA ===
         let rubricScores = { c1: 0, c2: 0, c3: 0, c4: 0, c5: 0 };
 
         function openRubric() {
             document.getElementById('rubric-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeRubric() {
@@ -1346,33 +1349,27 @@
         }
 
         function updateRubric(criterion, value, element) {
-            // Guardar el valor
             rubricScores[criterion] = value;
-
-            // Lógica visual: desmarcar hermanos y marcar el clickado
             let row = element.closest('tr');
             row.querySelectorAll('td.score-cell').forEach(td => {
-                td.classList.remove('bg-green-900/60', 'border-green-500', 'border-4', 'scale-[1.02]', 'shadow-lg');
-                td.classList.add('border-gray-700', 'border-r'); // Restaurar bordes normales
+                td.classList.remove('bg-green-900/60', 'border-green-500', 'border-4', 'scale-[1.02]', 'shadow-lg', 'relative', 'z-10');
+                td.classList.add('border-gray-700', 'border-r'); 
             });
             
             element.classList.remove('border-gray-700');
             element.classList.add('bg-green-900/60', 'border-green-500', 'border-4', 'scale-[1.02]', 'shadow-lg', 'relative', 'z-10');
 
-            // Calcular total
             let total = Object.values(rubricScores).reduce((a, b) => a + b, 0);
-            
-            // Actualizar interfaz del total con colores según nota
             let totalElement = document.getElementById('rubric-total');
             totalElement.innerText = total.toFixed(2);
             
             totalElement.classList.remove('text-gray-500', 'text-red-500', 'text-yellow-500', 'text-green-500', 'text-blue-500');
             
             if (total === 0) totalElement.classList.add('text-gray-500');
-            else if (total < 5) totalElement.classList.add('text-red-500'); // Suspenso
-            else if (total < 7) totalElement.classList.add('text-yellow-500'); // Bien
-            else if (total < 9) totalElement.classList.add('text-blue-500'); // Notable
-            else totalElement.classList.add('text-green-500'); // Sobresaliente
+            else if (total < 5) totalElement.classList.add('text-red-500'); 
+            else if (total < 7) totalElement.classList.add('text-yellow-500'); 
+            else if (total < 9) totalElement.classList.add('text-blue-500'); 
+            else totalElement.classList.add('text-green-500'); 
         }
 
         function resetRubric() {
@@ -1386,7 +1383,7 @@
             });
         }
 
-        // Lógica para desplegar la información del ECLSS
+        // === LÓGICA DE ECLSS ===
         function toggleECLSS() {
             const content = document.getElementById('eclss-content');
             const icon = document.getElementById('eclss-icon');
@@ -1400,6 +1397,10 @@
             }
         }
 
+        // === LÓGICA MODO TERMINAL DOCENTE ===
+        let currentSlide = 1;
+        const totalSlides = 10; 
+
         function toggleTerminal() {
             const terminal = document.getElementById('teacher-terminal');
             const mainContent = document.getElementById('main-content');
@@ -1408,7 +1409,7 @@
             if (terminal.classList.contains('hidden')) {
                 terminal.classList.remove('hidden');
                 mainContent.classList.add('hidden');
-                nav.classList.add('-translate-y-full'); // Esconde el menú superior
+                nav.classList.add('-translate-y-full'); 
             } else {
                 terminal.classList.add('hidden');
                 mainContent.classList.remove('hidden');
